@@ -83,3 +83,9 @@ HelloPlugin.prototype.apply = compiler => {
  
 module.exports = HelloPlugin
 ```
+
+
+## webpack热更新原理
+插件`hot-module-replacement-plugin` 包给 `webpack-dev-server` 提供了热更新的能力，它们两者是结合使用的。
+1. `webpack-dev-server(WDS)`的功能提供 `bundle server`的能力，就是生成的 `bundle.js` 文件可以通过 `localhost://xxx` 的方式去访问，另外 `WDS` 也提供 `livereload`(浏览器的自动刷新)。
+2. `hot-module-replacement-plugin` 的作用是提供 `HMR` 的 `runtime`，并且将 `runtime` 注入到 `bundle.js` 代码里面去。一旦磁盘里面的文件修改，那么 `HMR server` 会将有修改的 `js module` 信息发送给 `HMR runtime`，然后 `HMR runtime` 去局部更新页面的代码。因此这种方式可以不用刷新浏览器。

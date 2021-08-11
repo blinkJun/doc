@@ -6,7 +6,7 @@
 
 ## `mutation`和`action`的区别
   - 思维的不同
-    - `mutation`专门用于修改`state`且必须为同步
+    - `mutation`专门用于修改`state`且必须为同步（`mutation`期望执行后立刻获得一个新状态，使用异步结果不可预料）
     - `action`用于处理业务代码和异步请求，可调用多个`mutation`
   - 使代码结构和逻辑更清晰
 

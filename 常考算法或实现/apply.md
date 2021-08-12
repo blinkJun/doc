@@ -47,7 +47,7 @@ Function.prototype.myCall = function(context,...args){
 Function.prototype.myBind(context){
     const that = this
     return function(...args){
-        return this.apply(that,args)
+        return that.apply(context,args)
     }
 }
 ```

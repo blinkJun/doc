@@ -21,8 +21,8 @@ program
 .name(Object.keys(pkg.bin)[0])                  //命令的名称（可不设，自动获取）
 .version('1.0.0')                               //版本号
 .usage('<command> [options]')                   //使用提示
-.option('-d，--debug','是否开启调试模式',false)   //设置参数、提示、默认参数
-.option('-e，--env <envName>','获取环境变量名称')
+.option('-d,--debug','是否开启调试模式',false)   //设置参数、提示、默认参数
+.option('-e,--env <envName>','获取环境变量名称')
 .parse(process.argv)                            //解析参数
 
 ```
@@ -34,7 +34,7 @@ const clone = program.command('clone <source> [destination]'); //<>表示参数�
 
 clone
 .description('clone a registry')                               // 命令描述，在-help时提示
-.option('-f，--force','是否强制拷贝')                           //属于命令的选项
+.option('-f, --force','是否强制拷贝')                           //属于命令的选项
 .action((source,destination,cmdOptions)=>{
   console.log('do clone',source,destination,cmdOptions.force)
 })
@@ -108,7 +108,7 @@ program.on('--help',()=>{
 ```javascript
 // 监听并修改环境变量
 program.on('option:debug',()=>{
-  if(program.debug){
+  if(program.opts().debug){
     process.env.LOG_LEVEL = 'verbose'
   }
 })

@@ -1,4 +1,5 @@
 ## [yargs](https://www.npmjs.com/package/yargs) 的使用方法
+注册命令行命令
 
 ### 安装
 ```BASH

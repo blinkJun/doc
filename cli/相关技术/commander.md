@@ -1,4 +1,5 @@
 ## [commander](https://www.npmjs.com/package/commander) 的使用方法
+注册命令行命令
 
 ### 安装
 ```BASH

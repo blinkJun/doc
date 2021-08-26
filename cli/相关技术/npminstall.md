@@ -1,4 +1,5 @@
 ## [npminstall](https://www.npmjs.com/package/npminstall) 的使用方法
+安装模块
 
 ### 安装
 ```BASH

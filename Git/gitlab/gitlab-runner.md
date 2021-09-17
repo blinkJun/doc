@@ -50,7 +50,7 @@ exit
 ## 配置项目
 
 ### 可能存在的问题
-- 若`runner`配置tag标签，则需要点击`runner`进入到配置页面，配置不符合`tag`的提交也会触发runner执行
+- 若`runner`配置`tag`标签，则需要点击`runner`进入到配置页面，配置不符合`tag`的提交也会触发runner执行
 
 ### 配置`.gitlab-ci.yml`
 ```yml

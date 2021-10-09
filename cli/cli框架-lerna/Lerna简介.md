@@ -107,3 +107,10 @@ package name: (core) @blink-cli-dev/utils
 7. `lerna version` [更新包版本](https://github.com/lerna/lerna/tree/main/commands/version#readme)
 
 8. `lerna publish` [更新包版本](https://github.com/lerna/lerna/tree/main/commands/publish) 在推送版本后使用
+    - 可以选择根据git或者package的状态进行发布：`lerna publish from-git`或者`lerna publish from-package`，**使用`from-package`时会将`package.json`中的依赖修改为线上依赖**
+    - 当出现`lerna ERR! E402 You must sign up for private packages`错误时，表示发布的包为私有包，应该将包发布为公开的包，在`package.json`中配置：
+        ```json
+            "publishConfig": {
+                "access": "public"
+            },
+        ```

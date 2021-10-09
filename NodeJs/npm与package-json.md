@@ -50,3 +50,13 @@
 }
 ```
 更多钩子：[npm scripts](https://docs.npmjs.com/cli/v7/using-npm/scripts)
+
+### 发布相关问题
+- 当发布出现`402`错误时，表示发布的包为私有包，应该通过发布公开包的方式进行发布：
+  - 通过`npm publish --access public`
+  - 在`package.json`中配置：
+  ```json
+    "publishConfig": {
+        "access": "public"
+    },
+  ```

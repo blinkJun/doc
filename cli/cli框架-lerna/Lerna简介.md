@@ -106,4 +106,4 @@ package name: (core) @blink-cli-dev/utils
 
 7. `lerna version` [更新包版本](https://github.com/lerna/lerna/tree/main/commands/version#readme)
 
-8. `lerna publish` [更新包版本](https://github.com/lerna/lerna/tree/main/commands/version#readme) 在推送版本后使用
+8. `lerna publish` [更新包版本](https://github.com/lerna/lerna/tree/main/commands/publish) 在推送版本后使用

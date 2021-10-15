@@ -14,6 +14,8 @@
 - `pm2 stop <id/name>`：停止进程
 - `pm2 delete <id/name>`：删除进程
 - `pm2 monit`：性能监控
+- `pm2 startup`:生成pm2-root开机自启动脚本，设置pm2-root为服务
+- `pm2 save`:将当前运行的项目保存，pm2-root会自动读取启动
 
 ## 基本配置
 ```javascript

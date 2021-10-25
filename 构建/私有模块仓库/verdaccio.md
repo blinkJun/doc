@@ -50,6 +50,7 @@ packages:
         # 查找的上线链路
         proxy: cnpmjs npmjs
     "**":
+        access: $all
         proxy: cnpmjs npmjs
 # 日志记录
 logs:

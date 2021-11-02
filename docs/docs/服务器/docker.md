@@ -26,7 +26,7 @@
 - 容器：运行程序的地方
 
 **仓库取出镜像，放置到容器中运行**
-![alt 属性文本](../assets/images/docker概念关系图.svg)
+![alt 属性文本](../assets/images/docker.svg)
 
 ### 仓库：可选择
 - hub.docker.com

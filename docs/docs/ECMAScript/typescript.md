@@ -197,7 +197,7 @@ type Test = {
 }
 ```
 
-### 和接口`interface`的差别
+### `type`和接口`interface`的差别
 
 - 类型：对象、函数两者都适用，但是 `type` 可以用于基础类型、联合类型、元祖
 ```typescript

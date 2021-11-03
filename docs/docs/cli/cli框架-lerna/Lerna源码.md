@@ -15,7 +15,7 @@
 - nodeJs加载node_modules模块的流程
 - 各种文件操作算法和最佳实践
 
-### 准备源码
+## 准备源码
 1. 下载源码：[lerna](https://github.com/lerna/lerna)
 2. 安装依赖
 3. IDE打开
@@ -29,7 +29,7 @@
 2. `step init` 进入方法内部
 3. `step out` 跳出方法
 
-### 结构和执行流程
+<!-- ## 结构和执行流程 -->
 
 #### 概念解释
 - `require(".")` 表示相对路径，当前目录下的index.js文件

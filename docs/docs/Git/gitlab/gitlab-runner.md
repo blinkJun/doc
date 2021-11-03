@@ -47,12 +47,12 @@ exit
 ```
 配置好的`runner`配置文件通常放在`/srv/gitlab-runner/config/config.toml`中，可进入容器进行修改，保存实时生效
 
-## 配置项目
-
-### 可能存在的问题
+## 可能存在的问题
 - 若`runner`配置`tag`标签，则需要点击`runner`进入到配置页面，配置不符合`tag`的提交也会触发runner执行
 
-### 配置`.gitlab-ci.yml`
+
+## 配置`.gitlab-ci.yml`
+在项目根目录下新增配置文件`.gitlab-ci.yml`
 ```yml
 # docker环境依赖
 image: node:14.10.0

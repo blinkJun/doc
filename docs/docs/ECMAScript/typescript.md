@@ -247,3 +247,20 @@ jQuery('#id')
 ```bash
 npm i @type/xxx --save-dev
 ```
+
+### 相关问题
+
+- 导入`node`模块显示找不到相关模块或者类型定义
+安装`node`类型定义：
+```bash
+npm i @types/node --save-dev
+```
+在项目根目录下配置`tsconfig.json`，
+添加配置：
+```json
+{
+  "compilerOptions":{
+    "moduleResolution": "node",
+  }
+}
+```

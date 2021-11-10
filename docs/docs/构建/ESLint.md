@@ -88,3 +88,48 @@ npx prettier --write src/main.ts
 在`ESLint`中使用 `prettier`插件
 - 禁用所有和`prettier`有关的代码格式规则
 - 将所有的 `prettier`规则和修改导入`ESLint`中，在`ESLint`统一的显示错误
+
+
+## 常用配置解析
+```json
+{
+  // eslint服务会从代码文件向上查找配置文件，当配置为root=true时停止向上查找
+  "root":true,
+  // 与parseOptions同时存在，配置解析器 
+  "parser":"vue-eslint-parser",
+  "parserOptions": {
+    // parser只能有一个，可在此再配置一个parser处理
+    "parser": "@typescript-eslint/parser",
+    // 默认是 script ，es模块配置为 module
+    "sourceType": "module",
+    // 额外的语言特性
+    "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true,
+    },
+  },
+  // 启用的环境
+  "env": {
+    "browser": true,
+    "node": true,
+  },
+  // 使用插件增强
+  "plugins": ["@typescript-eslint","prettier"],
+  // 基于哪些配置
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
+    "prettier"
+  ],
+  "rules": {
+    // 使用两个空格缩进
+    "indent":["warn",2],
+    // 样式不美观直接显示警报
+    "prettier/prettier": "prettier/prettier": ["warn",{
+      // window下换行是CRLF，linux下是LF 不检查这一项
+      "endOfLine": "auto"
+    }]
+  }
+}
+```

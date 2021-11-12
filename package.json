@@ -7,7 +7,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "cz": "git add . && npx git-cz",
+    "prepare": "husky install",
+    "commit": "git add . && npx git-cz",
+    "lint-staged": "lint-staged",
+    "pretty-quick": "pretty-quick --staged",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
@@ -19,8 +22,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog",
-      "scopes":["数据","运营"]
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "keywords": [
@@ -30,7 +32,13 @@
   "author": "530080147@qq.com",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
     "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1",
     "vitepress": "^0.20.0"
   }
 }

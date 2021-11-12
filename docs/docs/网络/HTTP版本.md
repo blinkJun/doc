@@ -1,16 +1,16 @@
 # HTTP各个版本特点和区别
 
-## `HTTP/1.x` 和 `HTTP/1.0` 区别 
+## `HTTP/1.x` 和 `HTTP/1.0` 区别
 
-1. tcp链接复用：`HTTP/1.0`一条tcp连接只能发送一个请求，`1.X`使用`keep-alive`可以复用tcp链接，但还是会按先后顺序阻塞发送：队头阻塞。
+1. 长连接：tcp链接复用，`HTTP/1.0`一条tcp连接只能发送一个请求，`1.X`使用`keep-alive`可以复用tcp链接，但还是会按先后顺序阻塞发送：队头阻塞。
 
-2. 缓存处理：在`HTTP/1.0`中header主要使用Expires、If-Modified-Since作为缓存判断依据，`HTTP/1.1`增加Entity tag、If-Match等条件请求，Cache-Control首部。
+2. 更多缓存处理首部：在`HTTP/1.0`中header主要使用Expires、If-Modified-Since作为缓存判断依据，`HTTP/1.1`增加Entity tag、If-Match等条件请求，Cache-Control首部。
 
 3. 新增`Host`首部：使用`Host`指定同一IP地址的不同主机名。`HTTP/1.0`默认一个IP对应一台服务器，没有此配置。
 
 4. 新增24个错误状态码：如`409 Confict`表示请求的资源与资源的当前状态发生冲突。
 
-5. 新增`Range`首部：可以请求资源的部分内容，从而实现断点续传。
+5. 断点续传：新增`Range`首部，可以请求资源的部分内容。
 
 ## `HTTP/2.0` 和 `HTTP/1.x` 区别
 

@@ -19,9 +19,15 @@ npm i eslint --save-dev
 ```bash
 npx eslint --version
 ```
+
 校验代码
 ```bash
 npx eslint --ext ts,vue src/**
+```
+
+初始化
+```bash
+npx eslint --init
 ```
 
 ### `VSCode` `ESLint`的插件，为代码提供实时校验
@@ -46,7 +52,7 @@ npx eslint --ext ts,vue src/**
     extends: [
       'eslint-config-myconfig', // 全称
   //  'myconfig'                   缩写
-    ], 
+    ],
     plugins: [],
     rules: {
       'quotes': 'single',
@@ -95,7 +101,7 @@ npx prettier --write src/main.ts
 {
   // eslint服务会从代码文件向上查找配置文件，当配置为root=true时停止向上查找
   "root":true,
-  // 与parseOptions同时存在，配置解析器 
+  // 与parseOptions同时存在，配置解析器
   "parser":"vue-eslint-parser",
   "parserOptions": {
     // parser只能有一个，可在此再配置一个parser处理

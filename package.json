@@ -11,9 +11,9 @@
     "commit": "git add . && npx git-cz",
     "lint-staged": "lint-staged",
     "pretty-quick": "pretty-quick --staged",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
+    "docs:dev": "vitepress dev src",
+    "docs:build": "vitepress build src",
+    "docs:serve": "vitepress serve src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

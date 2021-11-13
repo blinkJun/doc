@@ -36,7 +36,7 @@ Function.prototype.myCall = function(context,...args){
     }else{
         result = currentContext._trigger()
     }
-    delete currentContext
+    delete currentContext._trigger
     return result
 }
 

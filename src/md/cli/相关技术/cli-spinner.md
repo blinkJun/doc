@@ -1,12 +1,12 @@
 ## [cli-spinner](https://www.npmjs.com/package/cli-spinner) 的使用方法
 命令行loading效果
 
-### 安装
+## 安装
 ```BASH
 npm i cli-spinner --save
 ```
 
-### 基本使用
+## 基本使用
 ```javascript
 const {Spinner} = require('cli-spinner')
 

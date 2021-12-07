@@ -1,4 +1,10 @@
 # Lerna简介
+- 基于 git + npm 的多package项目管理工具
+- 实现原理
+  - 通过`import-local`优先调用本地lerna命令
+  - 通过`yargs`生成脚手架，先注册全局属性，再注册命令，最后通过`parse`方法解析参数
+  - `lerna`注册命令时需要传入`builder`和`handler`两个方法，`builder`用于注册命令专属的`options`,`handler`用来处理命令的业务逻辑
+  - `lerna`通过配置`npm`本地依赖的方式来进行本地开发，具体写法实在`package.json`的依赖中写入`file:your-local-module-path`，在`lerna publish`时会自动将该路径替换
 
 ## 原生脚手架开发痛点分析
 
@@ -49,7 +55,7 @@ Lerner是一个优化基于 git + npm 的多package项目的管理工具
     3. `lerna clean` 清空依赖
     4. `lerna bootstrap` 重装依赖
 4. 发布上线
-    1. `lerna version` 、`bump version` 
+    1. `lerna version` 、`bump version`
     2. `lerna changed` 查看上版本以来的所有变更
     3. `lerna diff` 查看diff
     4. `lerna publish` **项目发布**
@@ -60,7 +66,7 @@ Lerner是一个优化基于 git + npm 的多package项目的管理工具
 
 ```bash
 # 1. 安装lerna到全局环境
-npm i lerna -g 
+npm i lerna -g
 
 # 2. 安装lerna到开发环境
 npm i lerna --save-dev

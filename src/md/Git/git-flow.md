@@ -45,3 +45,36 @@
   - `hotfix/`开头代表`bug`修复
 
 - `commit`**言之有物**，简单描述做了什么
+
+## 使用`tag`管理版本
+
+**查看** `tag` 列表
+
+- `git tag`：列出所有标签
+- `git tag -l "v3.3.*"`：过滤标签
+
+**新建** `tag`：
+
+- `git tag v1.0`：在当前`commit`上添加一个`tag`
+- `git tag -a v1.1 -m "修复1.0的bug"`：添加一个带注解的`tag`
+- `git tag -a v0.9 9fceb02 -m "1.0的前一个版本"`：给指定的`commit`添加`tag`
+
+**查看** `tag` 详情：
+
+- `git show [tagName]`：查看`tag`的详细信息
+
+**推送** `tag` 到远程服务器
+
+- `git push origin [tagName]`：推送单个 `tag` 到远程
+- `git push origin --tags`：推送本地所有 `tag` 到远程
+
+**切换**到指定 `tag`：`git checkout [tagName]`
+这个时候不位于任何一个分支，你可以在此修改代码进行提交。但是切换分支时不会保存，你可以使用以下两种方式保存当前状态下修改的代码：
+
+1. 基于此状态创建一个新分支：`git checkout -b <new-branch-name>`
+2. 在此状态下新增`commit`，使用`git switch -c <new-branch-name>` 将提交保存到新分支。可使用`git switch -`撤销此操作。
+
+**删除** `tag`
+
+1. `git tag -d [tagName]`：本地删除指定`tag`
+2. `git push origin :refs/tags/[tagName]`：远程删除

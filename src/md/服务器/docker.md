@@ -19,7 +19,7 @@
   - 储存方式
   - api接口
 - 隔离
-		
+
 ### 关键概念
 - 仓库：超级码头
 - 镜像`image`：集装箱
@@ -31,16 +31,16 @@
 ### 仓库：可选择
 - hub.docker.com
 - c.163.com
-	
+
 ### 镜像：`image`
 `linux`联合文件系统：不同文件目录，联合到同一个文件夹，将联合的文件夹（只读）分层
 
 - 下载镜像：`docker pull <image-name>:<tag>`
 - 查看本地镜像：`docker images`
 - 删除镜像：`docker rmi <image-id>`
-- 上传镜像：`docker push <username>/<repository>:<tag>`，要先注册[hub.docker.com](hub.docker.com)
+- 上传镜像：`docker push <username>/<repository>:<tag>`，要先注册[hub.docker.com](http://hub.docker.com)
 
-      
+
 ### 容器： 镜像 + 可读写层
 运行态容器：一个可读写的统一文件系统加上隔离的进程空间和包含其中的进程。
 启动容器:`docker run -p xxx1:xxx2 -v=hostPath:containerPath -d hello-world`
@@ -124,8 +124,8 @@ services:
     images: admin-server #当前构建出来的镜像
     container_name: admin-server #容器名称
     ports: #端口映射
-      - 8081:3000 
-  
+      - 8081:3000
+
   admin-redis:
     image: redis #引用官网的镜像
     container_name: admin-redis
@@ -140,7 +140,7 @@ services:
     restart: always #出错则重启
     privileged: true #高权限，执行sql
     command: --default-authentication-plugin=mysql_native_password #远程访问
-    ports: 
+    ports:
       - 3305:3306
     volumes: # 文件映射
       - .docker-volumes/mysql/log:/var/log/mysql  #记录日志

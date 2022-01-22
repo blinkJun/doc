@@ -22,13 +22,13 @@
 http {
   # 开启gzip
   gzip  on;
-    
+
   #启用gzip压缩的最小文件
   gzip_min_length 1k;
-    
+
   #gzip 压缩级别， 1-10，数字越大压缩越好，但cpu消耗越高,且压缩效果不会明显提升，一般设置在2-4
   gzip_comp_level 4;
-  
+
   #压缩的文件类型
   gzip_types text/css application/javascript application/x-javascript text/javascript  application/octet-stream application/font-woff;
 
@@ -122,5 +122,23 @@ http {
           proxy_pass                          http://127.0.0.1:8501; # set the adress of the Node.js instance here
       }
   }
+}
+```
+
+- `cors`
+```nginx
+location /video-api {
+
+   if ($request_method = 'OPTIONS') {
+         add_header 'Access-Control-Allow-Origin' '*' always;
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,PUT,DELETE' always;
+        add_header 'Access-Control-Allow-Headers' '*' always;
+        add_header 'Access-Control-Max-Age' 1728000 always;
+        add_header 'Content-Length' 0;
+        add_header 'Content-Type' 'text/plain; charset=utf-8';
+        return 204;
+    }
+
+    proxy_pass https://gb.guangxixinchan.cn/cn21-open/api;
 }
 ```

@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a,a as d}from"./app.dfde2fab.js";const u='{"title":"Date \u548C \u65F6\u533A","description":"","frontmatter":{},"headers":[],"relativePath":"md/NodeJs/Date\u548C\u65F6\u533A.md","lastUpdated":1638340958387}',o={},c=d("",3),_=[c];function r(i,s,n,l,p,f){return a(),t("div",null,_)}var m=e(o,[["render",r]]);export{u as __pageData,m as default};

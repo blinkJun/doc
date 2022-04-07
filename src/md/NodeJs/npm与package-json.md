@@ -19,12 +19,50 @@
 ## `package.json`
 用来描述项目及项目所依赖的模块信息
 
-### 版本号
+### `name`
+推荐使用全小写和`-`作为包的名称，如：`validate-npm-package-name`
+可以使用此命令来查询模块名称是否已经被使用：`npm view <packageName>`
+
+### `description`
+用于书写描述此模块的基本信息。
+如果你希望你模块被更多人搜索使用，这个字段是必不可少的，它能帮助人们在`npm`库中快速搜索到你的模块
+
+### `keywords`
+这是一个字符串数组，可以将一个个关键字字符串填入。
+同样是为了帮助人们搜索到此模块
+
+### `version`
 语义化版本 - [semver](https://semver.org/lang/zh-CN/)
 版本格式：主版本号.次版本号.修订号（`1.0.0`），版本号递增规则如下
 - 主版本号：当你做了不兼容的API修改
 - 次版本号：当你做了向下兼容的功能性新增
 - 修订号：当你做了向下兼容的问题修正
+
+### `homepage`
+用于放置此模块的主页，可以是使用文档、`demo`
+
+### `repository`
+指定代码库的存放地址，方便查看模块的源码
+```json
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/cli.git",
+    // 指定目录
+    "directory": "packages/react-dom"
+  }
+}
+```
+
+### `bugs`
+`bugs`用于项目问题的反馈`issue`地址或者一个邮箱
+```json
+"bugs": {
+  "url" : "https://github.com/owner/project/issues",
+  "email" : "project@hostname.com"
+}
+```
+
 
 ### `files`：选择上传到npm的文件
 - 未配置此字段则默认忽略`.gitignore`中的内容
@@ -33,7 +71,11 @@
 
 ### 依赖：dependencies
 - `dependencies`：业务依赖模块
+  使用`npm i package --save`进行安装，在`npm`5.x开始可以忽略`--save`，要关闭此功能，使用`npm config set save false`
+
 - `devDependencies`：开发环境依赖模块
+  使用`npm i -D`或者`npm i --save-dev`进行安装
+
 - `peerDependencies`：使用此项目应安装的模块
 
 ### 安装依赖包的版本
@@ -53,7 +95,7 @@
 - `types`：`typescript`类型入口文件，提供模块的类型声明
 
 ### `scripts`：执行命令
-可以添加npm的生命周期钩子：
+添加自定义执行命令，也可以添加npm的生命周期钩子：
 ```json
 {
   "scripts":{
@@ -63,6 +105,18 @@
 }
 ```
 更多钩子：[npm scripts](https://docs.npmjs.com/cli/v7/using-npm/scripts)
+
+### `config`
+可以用于添加命令行的环境变量
+如有一个`packge.json`如下：
+```json
+{
+  "name" : "writepress",
+  "config" : { "port" : "8080" },
+  "scripts" : { "start" : "node server.js" }
+}
+```
+在`server.js`中就可以通过此方式获得`config`字段：`process.env.npm_package_config_port`
 
 ### 发布相关问题
 - 当发布出现`402`错误时，表示发布的包为私有包，应该通过发布公开包的方式进行发布：
@@ -94,4 +148,8 @@
 npm config set registry https://registry.npm.taobao.org
 # 查看配置信息
 npm config list
+```
+需要还原时：
+```bash
+npm config set registry https://registry.npmjs.org
 ```

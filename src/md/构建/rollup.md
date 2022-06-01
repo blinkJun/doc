@@ -11,11 +11,15 @@ export default {
   }
 }
 ```
+
 使用：
+
 ```bash
 npx rollup --config rollup.config.js
 ```
+
 - 输出 `umd` 格式文件并配置全局变量、排除依赖包
+
 ```javascript
 export default {
   input:'main.js',
@@ -36,6 +40,7 @@ export default {
 ## 使用[插件](https://github.com/rollup/awesome)
 
 - 读取`json`文件内容
+
 ```javascript
 import json from '@rollup/plugin-json';
 export default {
@@ -44,6 +49,7 @@ export default {
 ```
 
 - 读取`node`模块：
+
 ```javascript
 import {nodeResolve} from '@rollup/plugin-node-resolve'
 export default {
@@ -52,6 +58,7 @@ export default {
 ```
 
 - 压缩混淆代码：`rollup-plugin-terser`
+
 ```javascript
 import {terser} from 'rollup-plugin-terser'
 export default {
@@ -62,6 +69,7 @@ export default {
 - 处理 `vue` 文件内容：[rollup-plugin-vue](https://www.npmjs.com/package/rollup-plugin-vue)
 - 处理 `css` 内容：[rollup-plugin-css-only](https://www.npmjs.com/package/rollup-plugin-css-only)
 - 处理 `typescript`：[rollup-plugin-typescript2](https://www.npmjs.com/package/rollup-plugin-typescript2)
+
 ```javascript
 import vuePlugin from 'rollup-plugin-vue';
 // 需要增加对 style 的处理
@@ -86,6 +94,7 @@ export default {
 ```
 
 ## `external` 排除模块打包
+
 ```javascript
 export default {
   external:['vue'] || (id)=>{

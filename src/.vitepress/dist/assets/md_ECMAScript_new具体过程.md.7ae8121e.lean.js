@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.ca5faf2f.js";const f='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"md/ECMAScript/new\u5177\u4F53\u8FC7\u7A0B.md","lastUpdated":1648885436690}',o={},p=t("",3),e=[p];function c(l,r,u,_,i,k){return a(),s("div",null,e)}var m=n(o,[["render",c]]);export{f as __pageData,m as default};

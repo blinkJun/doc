@@ -98,7 +98,7 @@ export default {
 ```javascript
 export default {
   external:['vue'] || (id)=>{
-    return /^vue/.test(id) || deps.some(k=>new RegExp('^',k).test(id))
+    return /^vue/.test(id) || deps.some(k=>new RegExp(`^${k}`).test(id))
   }
 }
 ```

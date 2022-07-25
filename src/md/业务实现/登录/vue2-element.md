@@ -1,6 +1,7 @@
 # `vue2`和`element-ui`组合的具体实现
 
 ## 登录页，`src/Login.vue`：页面中的标题、样式、图片、字段需要进行调整
+
 ```vue
 <template>
   <div class="login-wrap">
@@ -223,6 +224,7 @@ export function getAuthorizationCode() {
 ```
 
 ## 配置接口，`src/api/account.js`
+
 ```js
 import { Message } from 'element-ui';
 import httpClient from './index';
@@ -269,6 +271,7 @@ export default {
 ```
 
 ## 路由守卫，`src/routes/index.js`
+
 ```js
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -312,6 +315,7 @@ export default router;
 ```
 
 ## 接口拦截添加`token`，`src/api/index.js`
+
 ```js
 import axios from 'axios';
 import { Message } from 'element-ui';

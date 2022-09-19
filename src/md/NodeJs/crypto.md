@@ -1,4 +1,4 @@
-# `crypto` 模块
+# `crypto` 模块（内置）
 
 ## 哈希(`hash`)与加密(`encrypto`)
 

@@ -1,5 +1,29 @@
 # `Mysql`
 
+## 关系型与非关系型数据库
+
+关系型如：`mysql`、`sqlserver`、`db2`、`oracle`，特点：
+
+1. `sql`语句增删查改操作
+2. 保持事务一致性，事务机制（回滚）
+
+非关系型：`mongodb`、`Hbase`、`Redis`
+
+1. no sql 、not only sql
+2. 轻量、高效、自由
+
+## 数据库概念
+
+| sql           | mongodb       | 说明                                 |
+| ------------- | ------------- | ------------------------------------ |
+| `database`    | `database`    | 数据库                               |
+| `table`       | `collection`  | 表/集合                              |
+| `row`         | `document`    | 记录行/文档                          |
+| `column`      | `field`       | 字段/域                              |
+| `index`       | `index`       | 索引                                 |
+| `table joins` |               | 表连接，`mongodb`不支持              |
+| `primary key` | `primary key` | 主键，`mongodb`自动将`_id`设置为主键 |
+
 ## 和 `Mongodb`的区别
 
 ## 建表

@@ -130,7 +130,7 @@ http {
 location /video-api {
 
    if ($request_method = 'OPTIONS') {
-         add_header 'Access-Control-Allow-Origin' '*' always;
+        add_header 'Access-Control-Allow-Origin' '*' always;
         add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,PUT,DELETE' always;
         add_header 'Access-Control-Allow-Headers' '*' always;
         add_header 'Access-Control-Max-Age' 1728000 always;

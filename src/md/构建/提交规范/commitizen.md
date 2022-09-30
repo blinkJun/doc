@@ -1,11 +1,62 @@
-# [`git-cz`](https://www.npmjs.com/package/git-cz)
+# `commitizen`
+让你的`git`提交更加规范
 
-按步骤完成一次规范的代码提交
+## 安装和使用
 
-## 直接使用
+全局安装
+```bash
+npm i commitizen -g
+```
+
+使用
+```
+git cz -m"init"
+```
+
+如果你不是运行在`Commitizen friendly`环境中，`git cz`就和普通的`git commit`一模一样。
+
+## 创建友好环境 `Making your repo Commitizen friendly`
+此环境即为`commitizen`适配器，通过问答选择的方式来规范提交结构信息。
+
+通过`commitizen`工具来安装符合`AngularJS`提交说明规范的适配器：
+```bash
+commitizen init cz-conventional-changelog --save-dev --save-exact
+```
+如果已有适配器，可通过`--force`来强制安装
+
+此操作实际做的工作如下：
+1. 安装`cz-conventional-changelog`适配器模块到项目
+2. 在`package.json`中添加如下配置：
+   ```json
+    "config": {
+      "commitizen": {
+        "path": "cz-conventional-changelog"
+      }
+    }
+   ```
+
+在2中，也可以选择把这个设置放置到单独文件中：`.czrc`：
+```json
+{
+  "path": "cz-conventional-changelog"
+}
+```
+
+
+## [`git-cz`](https://www.npmjs.com/package/git-cz)
+
+无需安装`commitizen`、`cz-conventional-changelog`适配器，使用指定命令即可完成一次规范的代码提交
+
+安装：
+```bash
+npm i git-cz --save-dev
+```
+
+使用
 ```bash
 npx git-cz
 ```
+
 或者在`package.json`中配置`scripts`：
 ```json
 {
@@ -29,18 +80,3 @@ npx git-cz
 - body，详细描述
 
 
-## `Commitizen` 适配器
-如果需要在项目中使用`commitizen`生成符合`AngularJS`规范的提交说明，初始化`cz-conventional-changelog`适配器：
-```bash
-npm i cz-conventional-changelog -D
-```
-在`package.json`中配置
-```json
-{
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
-}
-```

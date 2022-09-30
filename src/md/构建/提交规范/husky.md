@@ -12,6 +12,7 @@ npm install husky --save-dev
 ```bash
 npm set-script prepare "husky install"
 ```
+
 或者在`package.json`中配置：
 ```json
 {
@@ -19,6 +20,11 @@ npm set-script prepare "husky install"
     "prepare": "husky install"
   }
 }
+```
+
+初始化一次
+```bash
+npm run prepare
 ```
 
 ## 使用

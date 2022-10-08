@@ -1,5 +1,5 @@
 # [`lint-staged`](https://www.npmjs.com/package/lint-staged)
-校验暂存的代码
+使用`eslint`等工具校验和修复暂存的代码
 
 ## 安装
 ```bash
@@ -7,7 +7,9 @@ npm install lint-staged --save-dev
 ```
 
 ## 使用
-1. 在`package.json`中配置：
+
+1. 要预先配置好`eslint`
+2. 在`package.json`中配置：
 ```json
 {
   "scripts":{
@@ -18,5 +20,4 @@ npm install lint-staged --save-dev
   }
 }
 ```
-
-2. 使用：`lint-staged`
+过滤文件采用的是`glob`模式

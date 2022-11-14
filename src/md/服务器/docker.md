@@ -49,7 +49,28 @@
 - `-d`：后台运行
 - `--name`：定义容器名称
 
-### 常用操作
+## `docker`安装和启动
+```bash
+curl -sSL https://get.daocloud.io/docker | sh
+
+# 安装成功执行下面语句，如果有类似回显，说明安装成功
+docker --version
+# Docker version 18.06.1-ce, build e68fc7a
+
+# 启动
+systemctl start docker
+
+# 守护进程重启：
+systemctl daemon-reload
+
+# 重启Docker服务：
+systemctl restart docker / service docker restart
+
+# 关闭Docker服务：
+docker service docker stop / docker systemctl stop docker
+```
+
+## 常用操作
 ```bash
 docker ps -a               #查看所有运行的容器，-a显示隐藏的容器
 docker container ls -a     #获得容器信息
@@ -69,7 +90,7 @@ docker inspect <container ID> #查看容器具体信息
 5. `docker stop [容器id]`
 
 
-### `docker`网络
+## `docker`网络
 - 网络类型
   - `bridge`：独立模式，网络桥接
   - `host`：使用宿主主机网络
@@ -77,7 +98,7 @@ docker inspect <container ID> #查看容器具体信息
 - 端口映射：主机端口8080，容器端口80
   - `docker run -itd -p 8080:80 nginx`
 
-### `Dockerfile`：制作自己的镜像
+## `Dockerfile`：制作自己的镜像
 创建名称为`Dockerfile`的配置文件，放置在代码根目录：
 ```dockerfile
 # 指定维护者

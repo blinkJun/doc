@@ -186,3 +186,26 @@ npm config list
 ```bash
 npm config set registry https://registry.npmjs.org
 ```
+
+## 使用`npm`安装`git`模块
+
+如不想额外的部署私有模块化仓库，也不想将模块发布到`npm`公共平台上，可以选择直接安装私有`git`仓库如`gitlab`上的模块：
+
+如平常使用`git`一样，需要在`gitlab`上设置`ssh key`，使用如下方式安装`git`模块
+
+- `git+ssh`
+```bash
+  npm i git+ssh://git@github.com/livelybone/vue-select.git
+```
+
+- `git+http`
+```bash
+  npm i git+http://git.gxucreate.com:8091/sgz/bh-practitioners-nucleic-web.git
+```
+
+**使用`tag`来区分`git`模块版本**
+1. 为`git`版本库指定提交设置`tag`并推送到远程
+2. 安装模块的的时候使用`#`选择指定`tag`安装，如：
+```bash
+  npm i git+http://git.gxucreate.com:8091/sgz/bh-practitioners-nucleic-web.git#2.0.1
+```

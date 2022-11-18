@@ -30,7 +30,7 @@
 
 - 通过`compilerOptions`属性配置`JavaScript`语言支持。
 
-> 不要被 compilerOptions 混淆。 此属性的存在是因为 jsconfig.json 是 tsconfig.json 的后代，后者用于编译 TypeScript。
+> 不要被 compilerOptions 混淆。 此属性的存在是因为 `jsconfig.json` 是 `tsconfig.json` 的后代，后者用于编译 TypeScript。
 
 具体字段可根据[`tsconfig.json`的编译选项](https://www.tslang.cn/docs/handbook/compiler-options.html)
 

@@ -128,3 +128,36 @@ function plugin(){
   }
 }
 ```
+
+
+## 实现
+一些功能实现
+
+### 为工具函数库生成类型声明文件
+
+1. 安装`rollup-plugin-typescript2`插件
+2. 配置`typescript`插件：
+    ```js
+      // rollup.config.js
+      import tsPlugin from 'rollup-plugin-typescript2'
+      export default {
+        plugins:[
+          tsPlugin({
+            // 覆盖 tsconfig.json 配置
+            tsconfigOverride:{
+              "compilerOptions":{
+                "allowJs":true, /* 允许使用js文件 */
+                "module":"es2020", /* 模块类型 */
+                "declaration": true, /* 生成相关的 '.d.ts' 文件。 */
+                "declarationDir": "./dist/types", /* '.d.ts' 文件输出目录 */
+                "emitDeclarationOnly": true, /* 只生成声明文件，不生成 js 文件*/
+                "rootDir": "./lib", /* 指定输出文件目录（用于输出），用于控制输出目录结构 */
+              }
+            },
+            useTsconfigDeclarationDir:true, /* 允许指定类型声明文件导出目录 */
+            include:"**/*.js+(|x)", /* 必须指定包含哪些文件可以进行编译 */
+          }),
+          terser()
+        ]
+      }
+    ```

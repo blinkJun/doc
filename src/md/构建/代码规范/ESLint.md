@@ -61,6 +61,10 @@ npx eslint --init
     //...
   };
   ```
+- 如果想排除某些文件夹可以在项目根目录下增加一个文件：`.eslintignore`：
+  ```
+    dist
+  ```
 
 ### 修复提示的错误
 - 在 `VSCode` 中 `ctrl+alt+p`查找 `eslint`命令进行修复

@@ -50,6 +50,9 @@ gitlab-runner register
 exit
 ```
 
+删除无效的`runner`：
+`gitlab-runner verify --delete`
+
 配置好的`runner`配置文件通常放在`/srv/gitlab-runner/config/config.toml`中，可进入容器进行修改，保存实时生效
 
 ## 可能存在的问题
@@ -109,3 +112,5 @@ deploy:test:
     # 此处使用了阿里云oss的上传方式，可以选择其他方式：ssh，bash
     - node ./bin/oss/test.js
 ```
+
+在推送标签时才使用构建阶段，则将`only: - master`改为：`only: - tags`

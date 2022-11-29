@@ -114,3 +114,26 @@ deploy:test:
 ```
 
 在推送标签时才使用构建阶段，则将`only: - master`改为：`only: - tags`
+
+## 操作实现
+
+### 将本机文件内容更新到远程服务器：
+
+1. 首先实现[免密登录远程服务器](../../服务器/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8.md)
+
+2. 将变量保存至`gitlab`项目中的安全变量设置：
+
+   - `SSH_PRI_KEY`：私钥
+   - `CUSTOM_USERNAME`：远程服务器用户名
+   - `CUSTOM_IP`：远程服务器地址
+
+3. 编辑`gitlab-ci.yml`：
+   ```yml
+   # 发布
+   deploy:docs:
+     stage: deploy
+     script:
+       - eval $(ssh-agent -s) # 使用ssh
+       - bash -c 'ssh-add <(echo "$SSH_PRI_KEY")' # 缓存ssh key
+       - scp -o StrictHostKeyChecking=no -r docs/* $CUSTOM_USERNAME@$CUSTOM_IP:/usr/local/nginx/www/
+   ```

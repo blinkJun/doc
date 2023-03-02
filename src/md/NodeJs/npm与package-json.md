@@ -20,6 +20,43 @@
 - `npm config ls` 查看配置信息
 - `npm logout` 退出登录
 
+### 幽灵依赖 问题
+
+当我们用 `npm` 安装依赖时，他会把所有的依赖和依赖中的所有东西都打包到 `node_modules` 文件夹下。这种方式就是所谓的“扁平化方式”。
+让我们在实践中来看看。下面是 `package.json`：
+```json
+{
+  "dependencies": {
+    "unified": "10.1.0"
+  }
+}
+```
+
+在运行 `npm install` 之后，`node_modules` 会变成下面这样：
+```json
+node_modules
+├── @types
+├── bail
+├── extend
+├── is-buffer
+├── is-plain-obj
+├── trough
+├── unified
+├── unist-util-stringify-position
+├── vfile
+└── vfile-message
+```
+虽然这种方式已经工作了许多年，但是这种方式会导致一些问题，我们称这种问题叫做：“**幽灵依赖**”。
+
+（例如）在我们项目中声明的唯一的依赖是 `unified`，但我们仍然能在我们的项目代码中引用到 `is-plain-obj` 模块 (`unified` 的依赖)：
+```js
+import ob from "is-plain-obj";
+
+console.log(ob); // [Function: isPlainObject]
+```
+因为上述这种情况是可能发生的，所以我们声明的依赖以及依赖的依赖也可能出现这种问题，即在没有声明某个依赖作为依赖或对等依赖（`peerDependency`）的前提下，从 `node_modules` 中引入了这个依赖。
+
+
 ## `package.json`
 
 用来描述项目及项目所依赖的模块信息

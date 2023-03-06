@@ -1,53 +1,42 @@
-/*
- * @Author liangjun
- * @LastEditors liangjun
- * @Date 2021-11-02 20:42:58
- * @LastEditTime 2022-08-18 10:53:14
- * @Description
- */
-// const fs = require('fs')
-import fs from 'fs';
-import path from 'path';
-
-const deepInit = function (currentPath, linkPath) {
-  const stats = fs.statSync(currentPath);
-  if (stats.isDirectory()) {
-    const docs = fs.readdirSync(currentPath);
-    return docs
-      .filter((docName) => {
-        return !['assets'].includes(docName);
-      })
-      .map((docName) => {
-        const link = `${linkPath}/${docName}`;
-        const children = deepInit(path.resolve(currentPath, docName), link);
-        if (Array.isArray(children)) {
-          return {
-            text: docName,
-            children: children,
-          };
-        } else {
-          return children;
-        }
-      });
-  } else {
-    const pathInfo = path.parse(currentPath);
-    const sidebar = {
-      text: pathInfo.name,
-      link: linkPath.substring(0, linkPath.length - pathInfo.ext.length),
-    };
-    return sidebar;
-  }
-};
-// 生成文档目录
-const sidebars = deepInit(path.resolve(__dirname, '../md'), '/md');
-
-module.exports = {
+export default {
   title: 'Blink Docs',
-  description: 'web 前端 学习文档',
+  description: 'Blink 的学习文档',
   base: '/doc/',
+  head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
   themeConfig: {
     logo: '/images/logo.png',
     logoSmall: '/images/logo.png',
-    sidebar: sidebars,
+    editLink: {
+      pattern: 'https://github.com/blinkJun/doc/edit/master/src/:path',
+      text: 'Edit this page on GitHub',
+    },
+    docsBranch: 'master',
+    nav: [{ text: '学习文档', link: '/md/HTML/基本概念' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/blinkJun/doc' }],
+    sidebar: [
+      {
+        text: '学习文档',
+        items: [
+          {
+            text: 'HTML',
+            items: [
+              {
+                text: '基本概念',
+                link: '/md/HTML/基本概念',
+              },
+            ],
+          },
+          {
+            text: 'CSS',
+            items: [
+              {
+                text: '基本概念',
+                link: '/md/CSS/基本概念',
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
 };

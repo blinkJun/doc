@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a,a as o}from"./app.952c636c.js";const u='{"title":"Date \u548C \u65F6\u533A","description":"","frontmatter":{},"headers":[],"relativePath":"md/NodeJs/Date\u548C\u65F6\u533A.md","lastUpdated":1648885436692}',d={},c=o("",3),_=[c];function r(i,s,n,l,p,h){return a(),t("div",null,_)}var m=e(d,[["render",r]]);export{u as __pageData,m as default};

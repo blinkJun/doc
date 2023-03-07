@@ -1,3 +1,3 @@
-# 一些学习文档和心情记录。
+# 学习文档。
 
-[点击查看在线文档](https://blinkjun.gitee.io/doc)
+[点击查看在线文档](https://blinkjun.github.io/doc/)

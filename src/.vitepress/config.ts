@@ -2,7 +2,7 @@ export default {
   title: 'Blink Docs',
   description: 'Blink 的学习文档',
   base: '/doc/',
-  head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
+  head: [['link', { rel: 'icon', href: './images/logo.png' }]],
   themeConfig: {
     logo: '/images/logo.png',
     logoSmall: '/images/logo.png',
@@ -13,6 +13,9 @@ export default {
     docsBranch: 'master',
     nav: [{ text: '学习文档', link: '/md/HTML/基本概念' }],
     socialLinks: [{ icon: 'github', link: 'https://github.com/blinkJun/doc' }],
+    footer: {
+      copyright: 'Copyright © 2023-present Blink',
+    },
     sidebar: [
       {
         text: '学习文档',

@@ -17,4 +17,6 @@ npm install --save-dev prettier pretty-quick
 }
 ```
 
-2. 使用：`npm run pretty-quick`
+2. 使用
+   - 直接使用：`npm run pretty-quick`
+   - 搭配`husky`使用：[点击查看](./husky.md#常用钩子)

@@ -1,6 +1,6 @@
 # [`husky`](https://www.npmjs.com/package/husky)
 
-git钩子函数触发时，执行一系列命令
+`git`钩子函数触发时，执行一系列命令
 
 ## 安装
 

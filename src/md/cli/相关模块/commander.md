@@ -1,4 +1,4 @@
-## [commander](https://www.npmjs.com/package/commander) 的使用方法
+# [commander](https://www.npmjs.com/package/commander) 的使用方法
 注册命令行命令
 
 ### 安装
@@ -88,7 +88,7 @@ program
       isDefault:true,                             // 无通配命令时，默认执行此命令
       hidden:true                                 // 隐藏此命令提示
     }
-  )    
+  )
   .alias('i')                                     // install 别名 i
 ```
 - 自定义`help`信息

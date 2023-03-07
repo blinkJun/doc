@@ -1,4 +1,4 @@
-## [cli-spinner](https://www.npmjs.com/package/cli-spinner) 的使用方法
+# [cli-spinner](https://www.npmjs.com/package/cli-spinner) 的使用方法
 命令行loading效果
 
 ## 安装

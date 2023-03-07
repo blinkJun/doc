@@ -1,7 +1,7 @@
-## [`readline`](http://nodejs.cn/api/readline.html#readline_readline)
+# [`readline`](http://nodejs.cn/api/readline.html#readline_readline)
 逐行读取
 
-### 基本使用
+## 基本使用
 ```javascript
 const readline = require('readline')
 

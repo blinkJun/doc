@@ -1,4 +1,4 @@
-## [ejs](https://www.npmjs.com/package/ejs) 的使用方法
+# [ejs](https://www.npmjs.com/package/ejs) 的使用方法
 模板渲染
 
 ### 安装
@@ -32,7 +32,7 @@ const compilerTemplate = template(data);
 // 一次性使用
 const renderTemplate = ejs.render(html,data,options)
 
-// 对文件处理 
+// 对文件处理
 // 返回promise
 const renderedFile = ejs.renderFile(path.resolve(__dirname,'template.html'),data,options)
 // 回调函数

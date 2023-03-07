@@ -1,12 +1,12 @@
-## [inquirer](https://www.npmjs.com/package/inquirer) 的使用方法
+# [inquirer](https://www.npmjs.com/package/inquirer) 的使用方法
 命令行交互
 
-### 安装
+## 安装
 ```BASH
 npm i inquirer --save
 ```
 
-### 基本使用
+## 基本使用
 ```javascript
 const inquirer = require('inquirer')
 inquirer

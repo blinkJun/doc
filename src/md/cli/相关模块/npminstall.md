@@ -1,12 +1,12 @@
-## [npminstall](https://www.npmjs.com/package/npminstall) 的使用方法
+# [npminstall](https://www.npmjs.com/package/npminstall) 的使用方法
 安装模块
 
-### 安装
+## 安装
 ```BASH
 npm i npminstall --save
 ```
 
-### 安装模块到指定目录
+## 安装模块到指定目录
 ```javascript
 const npminstall = require('npminstall')
 

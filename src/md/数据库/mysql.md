@@ -9,7 +9,7 @@
 
 非关系型：`mongodb`、`Hbase`、`Redis`
 
-1. no sql 、not only sql
+1. `no sql` 、`not only sql`
 2. 轻量、高效、自由
 
 主要区别：
@@ -19,8 +19,8 @@
 
 优点：
 1. 易于维护：都使用格式一致的表结构
-2. 使用方便：SQL语言通用，可用于复杂查询
-3. 复杂操作： 支持SQL在一个或多个表中进行非常复杂的查询
+2. 使用方便：`SQL`语言通用，可用于复杂查询
+3. 复杂操作： 支持`SQL`在一个或多个表中进行非常复杂的查询
 
 缺点：
 1. 读写性能较差，特别是海量数据的高效率读写
@@ -36,7 +36,7 @@
 4. 成本低：部署简单
 
 缺点：
-1. 不提供SQL支持
+1. 不提供`SQL`支持
 2. 无事务处理
 3. 数据结构相对复杂，复杂查询功能欠缺
 
@@ -176,3 +176,8 @@ ON s.class_id=c.id
 - `SET NULL`：在父表上`update/delete`记录时，将子表上匹配记录的列设置为`null`（此列不能为`not null`）
 - `NO ACTION`：如果子表中有匹配的记录，则不允许对父表对应候选键进行`update/delete`操作
 - `RESTRICT`：同`NO ACTION`，都是立即检查外键约束
+
+
+## 在`NodeJs`中使用`mysql`
+
+[`sequelize`](https://www.sequelize.com.cn/)

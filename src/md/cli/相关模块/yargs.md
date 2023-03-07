@@ -1,12 +1,12 @@
-## [yargs](https://www.npmjs.com/package/yargs) 的使用方法
+# [yargs](https://www.npmjs.com/package/yargs) 的使用方法
 注册命令行命令
 
-### 安装
+## 安装
 ```BASH
 npm i yargs --save
 ```
 
-### 基本使用
+## 基本使用
 ```javascript
 const yargs = require('yargs/yargs')
 
@@ -33,7 +33,7 @@ cli
     describe:'bootstrap debug mode',
     alias:'d'
   }
-})                                                   
+})
 .option('registry',{                                 // 配置单个全局选项
   type:'string',
   describe:'define global registry',
@@ -48,7 +48,7 @@ cli
 .argv                                                // 完成初始化
 ```
 
-### 高级用法
+## 高级用法
 ```javascript
 // command:定义命令
 

@@ -591,6 +591,16 @@ function doc() {
       ],
     },
     {
+      text: '混合开发',
+      collapsed: true,
+      items: [
+        {
+          text: '交互原理和准备内容',
+          link: '/md/混合开发/交互原理和准备内容',
+        },
+      ],
+    },
+    {
       text: '业务实现',
       collapsed: true,
       items: [

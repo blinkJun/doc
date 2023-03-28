@@ -256,6 +256,11 @@ npm config set registry https://registry.npmjs.org
 
 如平常使用`git`一样，需要在`gitlab`上设置`ssh key`，使用如下方式安装`git`模块
 
+- `github`
+```bash
+  npm i github:livelybone/vue-select#latest
+```
+
 - `git+ssh`
 ```bash
   npm i git+ssh://git@github.com/livelybone/vue-select.git

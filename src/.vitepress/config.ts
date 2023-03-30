@@ -100,11 +100,11 @@ function doc() {
           items: [
             {
               text: '相关概念和原理',
-              link: '/md/vue/vue2/相关概念和原理',
+              link: '/md/Vue/Vue2/相关概念和原理',
             },
             {
               text: 'Vuex',
-              link: '/md/vue/vue2/Vuex',
+              link: '/md/Vue/Vue2/Vuex',
             },
           ],
         },
@@ -114,25 +114,25 @@ function doc() {
           items: [
             {
               text: '相关概念和原理',
-              link: '/md/vue/vue3/相关概念和原理',
+              link: '/md/Vue/Vue3/相关概念和原理',
             },
             {
               text: '纯函数和副作用函数',
-              link: '/md/vue/vue3/纯函数和副作用函数',
+              link: '/md/Vue/Vue3/纯函数和副作用函数',
             },
           ],
         },
         {
           text: '组件之间通信的4种方法',
-          link: '/md/vue/vue2/组件之间通信的4种方法',
+          link: '/md/Vue/组件之间通信的4种方法',
         },
         {
           text: '组件库的创建',
-          link: '/md/vue/组件库的创建',
+          link: '/md/Vue/组件库的创建',
         },
         {
           text: '组件库文档的创建',
-          link: '/md/vue/组件库文档的创建',
+          link: '/md/Vue/组件库文档的创建',
         },
       ],
     },

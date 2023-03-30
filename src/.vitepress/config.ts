@@ -113,16 +113,8 @@ function doc() {
           collapsed: true,
           items: [
             {
-              text: '与Vue2比较',
-              link: '/md/vue/vue3/与Vue2比较',
-            },
-            {
               text: '相关概念和原理',
               link: '/md/vue/vue3/相关概念和原理',
-            },
-            {
-              text: 'compositionAPI',
-              link: '/md/vue/vue3/compositionAPI',
             },
             {
               text: '纯函数和副作用函数',
@@ -521,6 +513,10 @@ function doc() {
         {
           text: '地图概念',
           link: '/md/其他/地图概念',
+        },
+        {
+          text: '命名方式',
+          link: '/md/其他/命名方式',
         },
       ],
     },

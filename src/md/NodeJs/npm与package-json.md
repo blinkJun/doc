@@ -206,6 +206,12 @@ console.log(ob); // [Function: isPlainObject]
 
 在`server.js`中就可以通过此方式获得`config`字段：`process.env.npm_package_config_port`
 
+也可以在命令行上加上标志使脚本得到配置如：
+- `npm run start --port`，在`server.js`中通过`process.env.npm_config_port`得到`true`
+- `npm run start --port=8080`，在`server.js`中通过`process.env.npm_config_port`得到`8080`
+
+若想将参数透传给`nodejs`命令，可在参数前添加`--`，如：`npm run start -- --port=8080 --env=dev`透传给`nodejs`
+
 ### 发布相关问题
 
 - 当发布出现`402`错误时，表示发布的包为私有包，应该通过发布公开包的方式进行发布：

@@ -8,7 +8,7 @@
 
 1. 配置主页：`index.md`
 
-```md
+```yaml
 ---
 home: true
 heroImage: /images/logo.png
@@ -61,13 +61,13 @@ export default {
         {
           text: '指南',
           children: [
-            { 
-              text: 'index', 
-              link: '/md/guide/' 
+            {
+              text: 'index',
+              link: '/md/guide/'
             },
-            { 
-              text: 'button', 
-              link: '/md/guide/button' 
+            {
+              text: 'button',
+              link: '/md/guide/button'
             },
           ]
         }
@@ -76,13 +76,13 @@ export default {
         {
           text: '组件',
           children: [
-            { 
-              text: 'index', 
-              link: '/md/components/' 
+            {
+              text: 'index',
+              link: '/md/components/'
             },
-            { 
-              text: 'button', 
-              link: '/md/components/button' 
+            {
+              text: 'button',
+              link: '/md/components/button'
             },
           ]
         }

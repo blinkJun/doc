@@ -1,94 +1,117 @@
-# 使用 [`vitepress`](https://vitejs.cn/vitepress/) 创建组件库文档
-先根据文档安装环境，启动默认的文档服务
+# 使用 `vitepress` 创建组件库文档
+先根据文档安装环境，启动默认的文档服务。
+
+- [最新文档](https://vitepress.dev/)
+- [中文文档](https://vitejs.cn/vitepress/)
 
 ## tips
 - `0.20.1` 版本不支持中文文件夹解析，开发服务可打开，生产打包会报错
 
-## 进行一些基础配置
+## 页面
+基本和`vuepress`基本一样，点击查看[`vuepress`页面](./vuepress.md#页面)
 
-1. 配置主页：`index.md`
+或者查看：
+- [路由](https://vitepress.dev/guide/routing)
+- [formatter](https://vitepress.dev/guide/frontmatter)
+- [theme-formatter](https://vitepress.dev/reference/frontmatter-config#default-theme-only)
 
+默认主题下首页`fomatter`模板：
 ```yaml
 ---
-home: true
-heroImage: /images/logo.png
-heroAlt: Blink Elements
-heroText: Blink Elements
-tagline: UI组件库
-actionText: Get Started
-actionLink: /md/guide/
+layout: home
+title: Blink 的个人空间
+titleTemplate: web前后端学习记录、总结
+
+hero:
+  name: Blink 的个人空间
+  text: web前后端学习记录、总结
+  tagline: Front End Doc, NodeJs Doc.
+  actions:
+    - theme: brand
+      text: 查看学习文档 →
+      link: /md/HTML/基本概念
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/blinkJun/doc
+
 features:
-  - title: Simplicity First
-    details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  - title: Vue-Powered
-    details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
-  - title: Performant
-    details: VitePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-footer: MIT Licensed | Copyright © 2019-present LJ
+  - title: 'vitepress + github actions'
+    details: 使用 vitepress 文档、github actions 自动构建.
+  - title: 前端学习
+    details: 包含前端大部分需要的知识个人总结和教程
+  - title: NodeJs后端学习
+    details: 包含NodeJs学习过程中的个人总结和教程.
+  - title: 其它相关知识学习
+    details: 其它相关知识学习记录.
 ---
 ```
 
-2. 在文档根目录下创建`.vitepress`文件夹，对主题进行基本配置
-```typescript
-import {mdPlugin} from './config/plugins'
-import {HeadConfig} from 'vitepress'
+## `.vitepress`：如何构建文档的配置
 
+`config.ts`，配置如何构建文档：
 
+1. 主要[配置](https://vitepress.dev/reference/site-config)
+
+```ts
 export default {
-  title: 'Blink-Elements',
-  description: 'Just playing around.',
-  markdown:{
-    config:mdPlugin
-  },
-  head:[
-    [
-      'link',
-      {
-        rel: 'icon',
-        href: '/images/logo.png',
-      },
-    ],
-  ] as HeadConfig[],
-  themeConfig: {
-    repo: 'blink-elements',
-    logo: '/images/logo.png',
-    nav: [
-      { text: '指南', link: '/md/guide/',activeMatch: '^/guide/' },
-      { text: '组件', link: '/md/components/',activeMatch: '^/components/' }
-    ],
-    sidebar:{
-      '/md/guide/':[
-        {
-          text: '指南',
-          children: [
-            {
-              text: 'index',
-              link: '/md/guide/'
-            },
-            {
-              text: 'button',
-              link: '/md/guide/button'
-            },
-          ]
-        }
-      ],
-      '/md/components/':[
-        {
-          text: '组件',
-          children: [
-            {
-              text: 'index',
-              link: '/md/components/'
-            },
-            {
-              text: 'button',
-              link: '/md/components/button'
-            },
-          ]
-        }
-      ]
-    }
-  },
+  title: 'Blink Docs',
+  description: 'Blink 的学习文档',
+  base: '/doc/',
+  head: [['link', { rel: 'icon', href: '/doc/images/logo.png' }]],
 }
 ```
-更多配置查阅[`vitepress`](https://vitejs.cn/vitepress/)
+
+2. [配置主题](https://vitepress.dev/reference/default-theme-config)
+
+```ts
+export default {
+  themeConfig:{
+    logo: '/images/logo.png',
+    logoSmall: '/images/logo.png',
+    editLink: {
+      pattern: 'https://github.com/blinkJun/doc/edit/master/src/:path',
+      text: 'Edit this page on GitHub',
+    },
+    docsBranch: 'master',
+    socialLinks: [{ icon: 'github', link: 'https://github.com/blinkJun/doc' }],
+    footer: {
+      copyright: 'Copyright © 2023-present Blink',
+    },
+  }
+}
+```
+
+3. 使用主题配置，配置页面中的导航栏和侧边栏：[sidebar](https://vitepress.dev/reference/default-theme-sidebar)
+
+```ts
+export default {
+    themeConfig: {
+        nav: [
+            { text: '指南', link: '/md/guide/' },
+        ],
+        // 使用 侧边栏数组 所有页面使用同样的侧边栏
+        sidebar:[
+          {
+            text: 'Section Title A',
+            items: [
+              { text: 'Item A', link: '/item-a' },
+              { text: 'Item B', link: '/item-b' },
+            ]
+          },
+        ],
+        // 使用 侧边栏对象 不同页面路径下使用不同的侧边栏
+        sidebar:{
+          '/guide/': [
+            {
+              text: 'Guide',
+              items: [
+                { text: 'Index', link: '/guide/' },
+                { text: 'One', link: '/guide/one' },
+                { text: 'Two', link: '/guide/two' }
+              ]
+            }
+          ],
+        }
+    }
+}
+```

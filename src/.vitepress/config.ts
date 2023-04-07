@@ -371,6 +371,10 @@ function doc() {
               link: '/md/构建/文档构建/jsdoc',
             },
             {
+              text: 'markdown-it',
+              link: '/md/构建/文档构建/markdown-it',
+            },
+            {
               text: 'vuepress',
               link: '/md/构建/文档构建/vuepress',
             },

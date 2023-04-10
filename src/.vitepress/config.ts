@@ -88,6 +88,10 @@ function doc() {
           text: 'typescript',
           link: '/md/ECMAScript/typescript',
         },
+        {
+          text: '纯函数和副作用函数',
+          link: '/md/ECMAScript/纯函数和副作用函数',
+        },
       ],
     },
     {
@@ -95,44 +99,16 @@ function doc() {
       collapsed: true,
       items: [
         {
-          text: 'Vue2',
-          collapsed: true,
-          items: [
-            {
-              text: '相关概念和原理',
-              link: '/md/Vue/Vue2/相关概念和原理',
-            },
-            {
-              text: 'Vuex',
-              link: '/md/Vue/Vue2/Vuex',
-            },
-          ],
+          text: 'Vue2相关概念和原理',
+          link: '/md/Vue/Vue2相关概念和原理',
         },
         {
-          text: 'Vue3',
-          collapsed: true,
-          items: [
-            {
-              text: '相关概念和原理',
-              link: '/md/Vue/Vue3/相关概念和原理',
-            },
-            {
-              text: '纯函数和副作用函数',
-              link: '/md/Vue/Vue3/纯函数和副作用函数',
-            },
-          ],
+          text: 'Vue3相关概念和原理',
+          link: '/md/Vue/Vue3相关概念和原理',
         },
         {
-          text: '组件之间通信的4种方法',
-          link: '/md/Vue/组件之间通信的4种方法',
-        },
-        {
-          text: '组件库的创建',
-          link: '/md/Vue/组件库的创建',
-        },
-        {
-          text: '组件库文档的创建',
-          link: '/md/Vue/组件库文档的创建',
+          text: '组件库的设计',
+          link: '/md/Vue/组件库的设计',
         },
       ],
     },
@@ -623,6 +599,10 @@ function doc() {
         {
           text: '文件上传',
           link: '/md/业务实现/文件上传',
+        },
+        {
+          text: 'vue2组件中使用Echarts',
+          link: '/md/业务实现/组件中使用Echarts',
         },
         {
           text: '登录',

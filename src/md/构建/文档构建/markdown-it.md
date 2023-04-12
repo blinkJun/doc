@@ -51,7 +51,7 @@ import chalk from 'chalk';
 
 function tryLoadLanguages(lang){
   // 尝试加载
-  if (!prism.languages[lang]) {
+  if (!Prism.languages[lang]) {
     try {
       loadLanguages([lang]);
     }catch (e) {
@@ -106,12 +106,12 @@ function wrap(code,lang){
 
 ```js
 export default function highlight(code,lang){
-  const lang = formatLang(lang)
+  lang = formatLang(lang)
 
   tryLoadLanguages(lang)
 
-  if (prism.languages[lang]) {
-    const highlightCode = prism.highlight(str, prism.languages[lang], lang);
+  if (Prism.languages[lang]) {
+    const highlightCode = Prism.highlight(code, Prism.languages[lang], lang);
     return wrap(highlightCode, lang);
   }
 

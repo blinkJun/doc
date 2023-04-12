@@ -4,6 +4,7 @@ export default {
   base: '/doc/',
   head: [['link', { rel: 'icon', href: '/doc/images/logo.png' }]],
   themeConfig: {
+    localSearch: true,
     logo: '/images/logo.png',
     logoSmall: '/images/logo.png',
     editLink: {

@@ -19,11 +19,11 @@
 ```yaml
 ---
 layout: home
-title: Blink 的个人空间
+title: Blink 的空间
 titleTemplate: web前后端学习记录、总结
 
 hero:
-  name: Blink 的个人空间
+  name: Blink 的空间
   text: web前后端学习记录、总结
   tagline: Front End Doc, NodeJs Doc.
   actions:
@@ -38,9 +38,9 @@ features:
   - title: 'vitepress + github actions'
     details: 使用 vitepress 文档、github actions 自动构建.
   - title: 前端学习
-    details: 包含前端大部分需要的知识个人总结和教程
+    details: 包含前端大部分需要的知识总结和教程
   - title: NodeJs后端学习
-    details: 包含NodeJs学习过程中的个人总结和教程.
+    details: 包含NodeJs学习过程中的总结和教程.
   - title: 其它相关知识学习
     details: 其它相关知识学习记录.
 ---

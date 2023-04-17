@@ -181,4 +181,4 @@ ON s.class_id=c.id
 
 ## 在`NodeJs`中使用`mysql`
 
-[`sequelize`](https://www.sequelize.com.cn/)
+使用[`sequelize`](./sequelize.md)管理数据库

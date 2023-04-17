@@ -33,9 +33,10 @@ jobs:
       - name: Build
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
-      - run: npm i --registry https://registry.npm.taobao.org
-      - run: npm run docs:build
+          node-version: '16'
+      - run: npm i pnpm -g --registry https://registry.npm.taobao.org
+      - run: pnpm i
+      - run: pnpm run docs:build
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

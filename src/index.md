@@ -7,6 +7,9 @@ hero:
   name: Blink 的个人空间
   text: web前后端学习记录、总结
   tagline: Front End Doc, NodeJs Doc.
+  image:
+    src: /images/logo.png
+    alt: Blink
   actions:
     - theme: brand
       text: 查看学习文档 →

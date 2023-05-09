@@ -20,7 +20,7 @@ root = true
 # 缩进风格：空格
 indent_style = space
 # 缩进大小2
-indent_size = 2
+indent_size = 4
 # 换行符lf
 end_of_line = lf
 # 字符集utf-8

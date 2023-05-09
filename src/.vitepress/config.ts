@@ -222,8 +222,12 @@ function doc() {
       collapsed: true,
       items: [
         {
-          text: 'git-flow',
-          link: '/md/Git/git-flow',
+          text: '常用操作',
+          link: '/md/Git/常用操作',
+        },
+        {
+          text: '分支管理',
+          link: '/md/Git/分支管理',
         },
         {
           text: 'mono-repo和multi-repo',
@@ -274,8 +278,12 @@ function doc() {
           collapsed: true,
           items: [
             {
-              text: '项目结构规范',
-              link: '/md/构建/代码规范/项目结构规范',
+              text: '命名规范',
+              link: '/md/构建/代码规范/命名规范',
+            },
+            {
+              text: '代码风格',
+              link: '/md/构建/代码规范/代码风格',
             },
             {
               text: 'editor-config',
@@ -284,6 +292,10 @@ function doc() {
             {
               text: 'ESLint',
               link: '/md/构建/代码规范/ESLint',
+            },
+            {
+              text: 'prettier',
+              link: '/md/构建/代码规范/prettier',
             },
             {
               text: 'jsconfig',

@@ -39,5 +39,5 @@ indent_style = tab
 ```
 
 1. 将文件保存在项目根目录
-2. 分别修改 indent_size 为 2 和 4 查看编辑器有无变化
-3. 若无变化则需要到编辑器插件市场查找 editorconfig 相关插件，安装即可。如 vscode 在插件市场中查找`editorCondif for VS Code`安装。
+2. 分别修改 `indent_size` 为 2 和 4 查看编辑器有无变化
+3. 若无变化则需要到编辑器插件市场查找 `editorconfig` 相关插件，安装即可。如 `vscode` 在插件市场中查找`editorCondif for VS Code`安装。

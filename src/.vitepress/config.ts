@@ -600,6 +600,40 @@ function doc() {
       collapsed: true,
       items: [
         {
+          text: '小程序',
+          collapsed: true,
+          items: [
+            {
+              text: '更新提示',
+              link: '/md/业务实现/小程序/更新提示',
+            },
+            {
+              text: '根据环境配置BaseUrl',
+              link: '/md/业务实现/小程序/根据环境配置BaseUrl',
+            },
+            {
+              text: '封装接口请求函数',
+              link: '/md/业务实现/小程序/封装接口请求函数',
+            },
+            {
+              text: '生成二维码',
+              link: '/md/业务实现/小程序/生成二维码',
+            },
+            {
+              text: '绘制海报',
+              link: '/md/业务实现/小程序/绘制海报',
+            },
+            {
+              text: '查看文件',
+              link: '/md/业务实现/小程序/查看文件',
+            },
+            {
+              text: '位置权限处理',
+              link: '/md/业务实现/小程序/位置权限处理',
+            },
+          ],
+        },
+        {
           text: '表格下载',
           link: '/md/业务实现/表格下载',
         },
@@ -614,10 +648,6 @@ function doc() {
         {
           text: '文件上传',
           link: '/md/业务实现/文件上传',
-        },
-        {
-          text: 'vue2组件中使用Echarts',
-          link: '/md/业务实现/组件中使用Echarts',
         },
         {
           text: '登录',

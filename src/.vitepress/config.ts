@@ -517,10 +517,6 @@ function doc() {
           text: '地图概念',
           link: '/md/其他/地图概念',
         },
-        {
-          text: '命名方式',
-          link: '/md/其他/命名方式',
-        },
       ],
     },
     {
@@ -604,6 +600,22 @@ function doc() {
       collapsed: true,
       items: [
         {
+          text: '表格下载',
+          link: '/md/业务实现/表格下载',
+        },
+        {
+          text: '打印页面中的元素',
+          link: '/md/业务实现/打印页面中的元素',
+        },
+        {
+          text: '天地图',
+          link: '/md/业务实现/天地图',
+        },
+        {
+          text: '文件上传',
+          link: '/md/业务实现/文件上传',
+        },
+        {
           text: '小程序',
           collapsed: true,
           items: [
@@ -636,22 +648,6 @@ function doc() {
               link: '/md/业务实现/小程序/位置权限处理',
             },
           ],
-        },
-        {
-          text: '表格下载',
-          link: '/md/业务实现/表格下载',
-        },
-        {
-          text: '打印页面中的元素',
-          link: '/md/业务实现/打印页面中的元素',
-        },
-        {
-          text: '天地图',
-          link: '/md/业务实现/天地图',
-        },
-        {
-          text: '文件上传',
-          link: '/md/业务实现/文件上传',
         },
         {
           text: '登录',

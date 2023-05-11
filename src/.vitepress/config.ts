@@ -95,6 +95,10 @@ function doc() {
           text: '纯函数和副作用函数',
           link: '/md/ECMAScript/纯函数和副作用函数',
         },
+        {
+          text: '数据流',
+          link: '/md/ECMAScript/数据流',
+        },
       ],
     },
     {

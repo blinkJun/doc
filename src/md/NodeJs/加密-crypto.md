@@ -9,7 +9,7 @@
 1. 同一种哈希计算得到的数据长度通常是一样的，而加密得到的数据长度通常与明文长度成正比
 2. 哈希算法不可逆，加密算法可逆
 
-![alt 属性文本](../assets/images/crypto.png)
+![alt 属性文本](../../assets/images/crypto.png)
 
 **哈希（`Hash`）与加密（`Encrypt`）的选择**
 

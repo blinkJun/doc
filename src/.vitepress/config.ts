@@ -41,6 +41,10 @@ function doc() {
           text: 'SEO',
           link: '/md/HTML/SEO',
         },
+        {
+          text: '常用描述标签',
+          link: '/md/HTML/常用描述标签',
+        },
       ],
     },
     {
@@ -616,12 +620,24 @@ function doc() {
           link: '/md/业务实现/文件上传',
         },
         {
+          text: '抽奖转盘',
+          link: '/md/业务实现/抽奖转盘',
+        },
+        {
           text: '样式实现',
           collapsed: true,
           items: [
             {
               text: '毛玻璃',
               link: '/md/业务实现/样式/毛玻璃',
+            },
+            {
+              text: '卡片翻转',
+              link: '/md/业务实现/样式/卡片翻转',
+            },
+            {
+              text: '方格透明背景',
+              link: '/md/业务实现/样式/方格透明背景',
             },
           ],
         },

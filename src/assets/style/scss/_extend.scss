@@ -1,0 +1,88 @@
+$imgurl: '../images/';
+
+$pink: #fbbbd1;
+$gold: #ffbe3c;
+$color-text: #333;
+$color-text-grey: #999;
+
+// 清除浮动
+%clearfix {
+  zoom: 1;
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+//溢出省略号 容器需要设置宽度
+// 在 flex:1 元素下时，内容可能会超出容器，在容器上加上 min-width:0;
+%ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+// 多行文本溢出省略号
+@mixin ellipsis($line: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  line-clamp: $line;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+// 绝对定位居中
+%ab-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+// 宽高
+@mixin size($width: auto, $height: auto) {
+  /* 提取不是默认参数的参数 */
+  @if $width != 'auto' {
+    width: $width;
+  }
+
+  @if $height != 'auto' {
+    height: $height;
+  }
+}
+
+// 背景
+@mixin bg($imgName, $position: center, $size: 100%, $repeat: no-repeat) {
+  background: url($imgurl + $imgName) $repeat $position;
+  background-size: $size;
+}
+
+// 定位
+@mixin fragment(
+  $top: auto,
+  $left: auto,
+  $right: auto,
+  $bottom: auto,
+  $z-index: auto
+) {
+  $parames: top left right bottom z-index;
+  $funcParames: $top $left $right $bottom $z-index;
+
+  /* 提取不是默认参数的参数 */
+  @for $i from 1 through length($funcParames) {
+    $param: nth($funcParames, $i);
+
+    @if $param != 'auto' {
+      #{nth($parames,$i)}: $param;
+    }
+  }
+
+  position: absolute;
+}

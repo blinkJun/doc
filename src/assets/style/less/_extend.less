@@ -1,0 +1,38 @@
+@imgUrl: '../images/';
+
+// 宽高
+.size(@width,@height) {
+  width: @width;
+  height: @height;
+}
+
+// 图片
+.image(@imageName,@position:center, @size:100%, @repeat:no-repeat) {
+  background: url('@{imgUrl}@{imageName}') @repeat @position;
+  background-size: @size;
+}
+
+// 带宽高的图片
+.sizeImage(@width,@height,@imageName,@position:center,@size:100%,@repeat:no-repeat) {
+  .size(@width,@height);
+  .image(@imageName,@position,@size,@repeat);
+}
+
+// 多行文本溢出省略号
+.ellipsis(@line:2) {
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  line-clamp: @line;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+// 渐变字体
+.textGradient(@image) {
+  background-image: @image;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

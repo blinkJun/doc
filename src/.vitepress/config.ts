@@ -103,6 +103,10 @@ function doc() {
           text: '数据流',
           link: '/md/ECMAScript/数据流',
         },
+        {
+          text: '设计模式',
+          link: '/md/ECMAScript/设计模式',
+        },
       ],
     },
     {
@@ -618,6 +622,10 @@ function doc() {
         {
           text: '文件上传',
           link: '/md/业务实现/文件上传',
+        },
+        {
+          text: '文件上传-ali-oss',
+          link: '/md/业务实现/文件上传-ali-oss',
         },
         {
           text: '抽奖转盘',

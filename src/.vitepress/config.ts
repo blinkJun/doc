@@ -616,6 +616,16 @@ function doc() {
           link: '/md/业务实现/文件上传',
         },
         {
+          text: '样式实现',
+          collapsed: true,
+          items: [
+            {
+              text: '毛玻璃',
+              link: '/md/业务实现/样式/毛玻璃',
+            },
+          ],
+        },
+        {
           text: '小程序',
           collapsed: true,
           items: [

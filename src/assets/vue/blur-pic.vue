@@ -52,7 +52,7 @@
   /* 模糊 */
   filter: blur(20px);
 
-  background: url('../../../assets/images/poster.jpg') center top no-repeat;
+  background: url('../images/poster.jpg') center top no-repeat;
   background-size: cover;
 
   /* 与大背景重合 */

@@ -36,3 +36,14 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+// 三角形
+.triangle(@direction,@color,@size:10px) {
+  width: 0;
+  height: 0;
+  border: @size solid;
+  border-top-color: if((@direction=bottom), @color, transparent);
+  border-right-color: if((@direction=left), @color, transparent);
+  border-bottom-color: if((@direction= top), @color, transparent);
+  border-left-color: if((@direction= right), @color, transparent);
+}

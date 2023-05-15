@@ -632,28 +632,6 @@ function doc() {
           link: '/md/业务实现/抽奖转盘',
         },
         {
-          text: '样式实现',
-          collapsed: true,
-          items: [
-            {
-              text: '毛玻璃',
-              link: '/md/业务实现/样式/毛玻璃',
-            },
-            {
-              text: '卡片翻转',
-              link: '/md/业务实现/样式/卡片翻转',
-            },
-            {
-              text: '方格透明背景',
-              link: '/md/业务实现/样式/方格透明背景',
-            },
-            {
-              text: '星系环绕',
-              link: '/md/业务实现/样式/星系环绕',
-            },
-          ],
-        },
-        {
           text: '小程序',
           collapsed: true,
           items: [
@@ -700,6 +678,32 @@ function doc() {
               link: '/md/业务实现/登录/vue2-element',
             },
           ],
+        },
+      ],
+    },
+    {
+      text: '样式实现',
+      collapsed: true,
+      items: [
+        {
+          text: '毛玻璃',
+          link: '/md/样式实现/毛玻璃',
+        },
+        {
+          text: '卡片翻转',
+          link: '/md/样式实现/卡片翻转',
+        },
+        {
+          text: '方格透明背景',
+          link: '/md/样式实现/方格透明背景',
+        },
+        {
+          text: '星系环绕',
+          link: '/md/样式实现/星系环绕',
+        },
+        {
+          text: '其它',
+          link: '/md/样式实现/其它',
         },
       ],
     },

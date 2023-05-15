@@ -2,7 +2,7 @@
  * @Author liangjun
  * @LastEditors liangjun
  * @Date 2019-05-29 16:33:50
- * @LastEditTime 2022-10-31 15:28:32
+ * @LastEditTime 2023-05-15 14:51:52
  * @Description utils function
  */
 
@@ -606,3 +606,32 @@ export function getPercent(value, total) {
     return `${percentValue}%`;
   }
 }
+
+/**
+ * @method angle
+ * @description 获取两个坐标点之间的角度
+ * @param {Object} start {x,y}
+ * @param {Object} end {x,y}
+ * @return {Number}
+ */
+export const angle = function (
+  { x: startX, y: startY },
+  { x: moveX, y: moveY }
+) {
+  const absX = Math.abs(startX - moveX);
+  const abxY = Math.abs(startY - moveY);
+
+  // x 轴之差为 0
+  if (absX === 0) {
+    return 90;
+  }
+
+  // y 轴之差为 0
+  if (abxY === 0) {
+    return 0;
+  }
+
+  let angle = (Math.atan(abxY / absX) * 360) / (2 * Math.PI);
+
+  return angle;
+};

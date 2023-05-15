@@ -1,5 +1,9 @@
 # `CSS`编码风格
 
+## 基础
+
+1. **建议** 线条、圆形等简单图形使用`css`实现，不必使用图片
+
 ## 选择器
 
 1. **建议** 适当使用直接选择器`>`，避免匹配到深层子元素
@@ -32,9 +36,11 @@
     }
     ```
 
-3. **建议** 避免使用`id`选择器、`!important`声明
+3. **建议** 避免使用`id`选择器、`*`选择器、`!important`声明
 
-4. **强制** 属性选择器中的值和文本内容必须用双引号包围。
+4. **建议** 避免使用内联样式，需要变量控制的属性如宽度高度这类类型应该使用`css3`变量。
+
+5. **强制** 属性选择器中的值和文本内容必须用双引号包围。
 
    不允许使用单引号，不允许不使用引号。
 
@@ -242,7 +248,7 @@
     }
     ```
 
-8. **强制** 颜色值中的英文字符尽量采用小写和简写，不用小写也需要在同一项目中保持一致
+8. **建议** 颜色值中的英文字符尽量采用小写和简写，不用小写也需要在同一项目中保持一致
 
     ```css
     /* good */
@@ -262,6 +268,61 @@
 9. **建议** 背景图同时给出水平和垂直方向的位置。
 
     背景图的初始位置是`0% 0%`，在只有一个方向的值时，另一个方向的值会被解析为 `center`。为避免理解上的困扰，应同时给出两个方向的值
+
+10. **建议** 善用继承样式，减少子级代码
+
+    常见继承属性：
+
+    - 字体系列
+  
+        - `font`
+        - `font-family`
+        - `font-weight`
+        - `font-size`
+        - `font-style`
+        - `font-variant: small-caps`; 所有小写字母转成大写字母，但是与其他文本相比尺寸更小
+
+
+
+    - 文本系列
+
+        - `text-indent`
+        - `text-align`
+        - `line-height`
+        - `word-spacing`
+        - `letter-spacing`: 字符间距
+        - `text-transform: capitalize`; 转大写 `lowercase`; 转小写
+        - `direction`：文字方向
+        - `color`
+
+
+
+    - 元素可见性
+
+        - `visibility`
+
+
+
+    - 表格布局
+
+        - `border-collapse`
+        - `border-spacing`
+        - `empty-cell`
+
+
+
+    - 列表布局
+
+        - `list-style-type`
+        - `list-style-image`
+        - `list-style-position`
+        - `list-style`
+
+
+
+    - 光标属性
+
+        - `cursor`
 
 ## `z-index`层级
 
@@ -354,10 +415,47 @@
     ```css
     .box {
       -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
+         -moz-box-sizing: border-box;
               box-sizing: border-box;
     }
     ```
+
+## `less`
+
+1. **建议** 善用嵌套、变量、组合属性类，以减少重复代码，使结构清晰
+   
+   ```less
+   /* good */
+    .default-font{
+        font-size:12px;
+        color:red;
+    }
+    .main{
+        .aside{
+            h3{
+                .default-font;
+                text-align:center;
+            }
+            p{
+                .default-font;
+                text-align:left;
+            }
+        }
+        
+    }
+
+    /* bad */
+    .main .aside h3{
+        font-size:12px;
+        color:red;
+        text-align:center
+    }
+    .main .aside p{
+        font-size:12px;
+        color:red;
+        text-align:left
+    }
+   ```
 
 ## `OOCSS` 和 `BEM`
 

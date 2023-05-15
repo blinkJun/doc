@@ -9,7 +9,7 @@
   width: 100%;
   height: 600px;
   position: relative;
-  background: url('../../../assets/images/poster.jpg') center top no-repeat;
+  background: url('../images/poster.jpg') center top no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }

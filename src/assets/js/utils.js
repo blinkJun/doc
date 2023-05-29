@@ -2,7 +2,7 @@
  * @Author liangjun
  * @LastEditors liangjun
  * @Date 2019-05-29 16:33:50
- * @LastEditTime 2023-05-15 14:51:52
+ * @LastEditTime 2023-05-29 17:40:08
  * @Description utils function
  */
 
@@ -12,7 +12,7 @@
  * @param {Number} times 时间戳
  * @return {String} '00:01'
  */
-const durationFormatByStamp = function (times) {
+export const durationFormatByStamp = function (times) {
   let minu = Math.floor(times / 1000 / 60);
   let second = Math.floor(
     60 * (times / 1000 / 60 - Math.floor(times / 1000 / 60))
@@ -23,52 +23,50 @@ const durationFormatByStamp = function (times) {
 };
 
 /**
- * @method dateFormatByStamp
- * @description 时间日期格式化
- * @param {String | Number | Date} timestamp 时间戳
- * @param {String} fmt 'yyyy-MM-dd hh:mm:ss'
- * @return {String} '2019-5-29 14:15:30'
+ * @method dateFormat
+ * @description 格式化日期文本
+ * @param {Date | String | Number} date 传入日期
+ * @param {String} format 传入格式如：yyyy-MM-dd
+ * @return {String}
+ * @example
+ * dateFormat(new Date(), 'yyyy-MM-dd')
+ * // 2023-01-02
  */
-const dateFormat = function (timestamp, fmt = 'yyyy-MM-dd hh:mm:ss') {
-  let date = timestamp;
-  if (!(date instanceof Date)) {
-    if (typeof date === 'string') {
-      if (isNaN(date)) {
-        return '';
-      } else {
-        date = new Date(Number(date));
-      }
-    } else if (typeof date === 'number') {
-      date = new Date(date);
-    } else {
-      return '';
-    }
+export function dateFormat(date, format) {
+  if (typeof date === 'string') {
+    date = date - 0 || (!/\d+T\d+/.test(date) ? date.replace(/-/g, '/') : date);
   }
-  var o = {
-    'M+': date.getMonth() + 1, // 月份
-    'd+': date.getDate(), // 日
-    'h+': date.getHours(), // 小时
-    'm+': date.getMinutes(), // 分
-    's+': date.getSeconds(), // 秒
-    'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
-    S: date.getMilliseconds(), // 毫秒
+
+  const d = new Date(date);
+  if (!date || d.toUTCString() === 'Invalid Date') {
+    return '';
+  }
+
+  var map = {
+    y: d.getFullYear(), // 年
+    M: d.getMonth() + 1, //月
+    d: d.getDate(), //日
+    h: d.getHours(), //时
+    m: d.getMinutes(), //分
+    s: d.getSeconds(), //秒
+    S: d.getMilliseconds(), //毫秒
+    q: Math.floor((d.getMonth() + 3) / 3), //季度
   };
-  if (/(y+)/.test(fmt)) {
-    fmt = fmt.replace(
-      RegExp.$1,
-      (date.getFullYear() + '').substr(4 - RegExp.$1.length)
-    );
-  }
-  for (var k in o) {
-    if (new RegExp('(' + k + ')').test(fmt)) {
-      fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length)
-      );
+
+  return format.replace(/([yMdhmsqS])\1*/g, function (m, t) {
+    var v = String(map[t]);
+
+    if (t === 'y') {
+      return v.substr(4 - m.length);
+    } else if (t === 'S') {
+      return ('00' + v).substr(v.length - 1);
+    } else if (m.length > 1) {
+      return ('0' + v).substr(v.length - 1);
     }
-  }
-  return fmt;
-};
+
+    return v;
+  });
+}
 export const date = (date) => dateFormat(date, 'yyyy-MM-dd');
 export const datetime = (date) => dateFormat(date, 'yyyy-MM-dd hh:mm:ss');
 export const times = (date) => dateFormat(date, 'hh:mm');
@@ -562,40 +560,71 @@ const copyText = function (text) {
  * @method toFixed
  * @description 重新避免原函数精度不准的问题
  * @param {Number} num 数值
- * @param {Number} s 保留小数点位数
+ * @param {Number} s 保留小数点位数 默认为2
  * @return {String}
+ * @example
+ * toFixed(25.244)
+ * // 25.24
  */
-const toFixed = function (num, s) {
+export function toFixed(num, s = 2) {
   const times = Math.pow(10, s);
   const des = num * times + 0.5;
   return parseInt(des, 10) / times + '';
-};
+}
 
 /**
- * @method toStandardNumber
- * @description 将数值格式化为符号分割的字符串数值
+ * @method formatNumber
+ * @description 格式化数值为特定格式
  * @param {Number} number 需要格式化的数值
- * @param {Number} precision 精确到哪一位
- * @param {String} thousand 分隔符
+ * @param {Number} precision 保留小数点，默认2
+ * @param {String} thousand 千分位分隔符，默认','
  * @return {String}
+ * @example
+ * formatNumber(1000.22,1,',')
+ * // '1,000.2'
  */
-const toStandardNumber = function (number, precision = 0, thousand = ',') {
-  if (!isNaN(number)) {
-    return (+number)
-      .toFixed(precision)
-      .replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&' + thousand);
+export function formatNumber(number, precision = 2, thousand = ',') {
+  if (typeof number == 'number' || (number -= 0)) {
+    return (number.toFixed(precision) + '').replace(
+      /\d{1,3}(?=(\d{3})+(\.\d*)?$)/g,
+      '$&' + thousand
+    );
   }
-  return number || '0';
-};
+  return '0';
+}
+
+/**
+ * @method formatFileSize
+ * @description 格式化文件大小
+ * @param  {number} total 文件大小
+ * @param  {number} n     total参数的原始单位如果为Byte，则n设为0，如果为KB，则n设为1，如果为MB，则n设为2，以此类推
+ * @return {string}       带单位的文件大小的字符串
+ * @example
+ * formatFileSize(300)
+ * // 300KB'
+ */
+export function formatFileSize(total, n = 0) {
+  var unitArr = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB'];
+  var len = total / 1024.0;
+
+  if (len > 1000) {
+    return formatFileSize(len, ++n);
+  }
+
+  return len.toPrecision(3) + unitArr[n];
+}
 
 /**
  * @method getPercent
  * @description 获取百分比
  * @param {Number} value 数值
- * @param {Number} total 总数值
+ * @param {Number} total 总数值 默认为100
  * @return {String} 百分比
+ * @example
+ * getPercent(0)
+ * // 0%
  */
-export function getPercent(value, total) {
+export function getPercent(value, total = 100) {
   if (total === 0 || (value === 0 && total === 0)) {
     return '100%';
   } else if (value === 0) {
@@ -635,3 +664,27 @@ export const angle = function (
 
   return angle;
 };
+
+/**
+ * @method getRandomColor
+ * @description 生成随机HEX色值
+ * @return {String}
+ */
+export function getRandomColor() {
+  return (
+    '#' +
+    Math.floor(Math.random() * 0xffffff)
+      .toString(16)
+      .padEnd(6, '0')
+  );
+}
+
+/**
+ * @method getStarScore
+ * @description 生成星级评分
+ * @param {Number} rate：（1-5）
+ * @return {String}
+ */
+export function getStarScore(rate) {
+  return '★★★★★☆☆☆☆☆'.slice(5 - rate, 10 - rate);
+}

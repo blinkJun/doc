@@ -62,6 +62,10 @@ function doc() {
           text: '字体',
           link: '/md/CSS/字体',
         },
+        {
+          text: '选择器',
+          link: '/md/CSS/选择器',
+        },
       ],
     },
     {

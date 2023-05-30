@@ -55,8 +55,12 @@ function doc() {
           link: '/md/CSS/基本概念',
         },
         {
-          text: '常见问题和实现',
-          link: '/md/CSS/常见问题和实现',
+          text: '常见问题',
+          link: '/md/CSS/常见问题',
+        },
+        {
+          text: '样式实现',
+          link: '/md/CSS/样式实现',
         },
         {
           text: '字体',

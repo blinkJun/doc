@@ -14,7 +14,12 @@ export default {
       text: 'Edit this page on GitHub',
     },
     docsBranch: 'master',
-    nav: [{ text: '学习文档', link: '/md/HTML/基本概念' }],
+    nav: [
+      { text: '学习文档', link: '/md/HTML/基本概念' },
+      { text: '工具类库', link: 'https://blinkjun.github.io/utils/' },
+      { text: 'Vue3组件库', link: 'https://blinkjun.github.io/elements/' },
+      { text: '脚手架工具', link: 'https://github.com/blinkJun/cli' },
+    ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/blinkJun/doc' }],
     footer: {
       copyright: 'Copyright © 2023-present Blink',

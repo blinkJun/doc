@@ -1,4 +1,4 @@
-# Vue2响应式
+# Vue2 响应式
 
 ## 原理
 
@@ -14,73 +14,72 @@
 // 定义依赖收集函数
 class Dep {
   // 收集实时存放的响应式回调
-  static activeUpdate
-  constructor(){
-    this.subs = new Set()
+  static activeUpdate;
+  constructor() {
+    this.subs = new Set();
   }
 
   // 收集
-  depend(){
-    if(Dep.activeUpdate){
-      this.subs.add(Dep.activeUpdate)
+  depend() {
+    if (Dep.activeUpdate) {
+      this.subs.add(Dep.activeUpdate);
     }
   }
 
   // 触发
-  notify(){
-    this.subs.forEach(update=>update())
+  notify() {
+    this.subs.forEach((update) => update());
   }
 }
 
 // 递归劫持
-const observe = function(origin){
-  if(!origin || typeof origin !== 'object'){
-    return 
+const observe = function (origin) {
+  if (!origin || typeof origin !== 'object') {
+    return;
   }
-  Object.keys(origin).forEach(key=>{
+  Object.keys(origin).forEach((key) => {
     // 必须缓存，不缓存再次调用 origin[key] 会触发getter方法，导致无限循环，内存溢出！！！！
     let value = origin[key];
     // 创建一个依赖收集实例
-    const dep = new Dep()
-    Object.defineProperty(origin,key,{
-      get(){
+    const dep = new Dep();
+    Object.defineProperty(origin, key, {
+      get() {
         // 收集
-        dep.depend()
-        return value
+        dep.depend();
+        return value;
       },
-      set(newValue){
-        value = newValue
+      set(newValue) {
+        value = newValue;
         // 触发
-        dep.notify()
-      }
-    })
-    observe(value)
-  })
-}
+        dep.notify();
+      },
+    });
+    observe(value);
+  });
+};
 
 // 设置响应式回调函数处理方法
-const autorun = function(update){
-  const wrapperUpdate = function(){
-    Dep.activeUpdate = wrapperUpdate
-    update()
-    Dep.activeUpdate = null
-  }
+const autorun = function (update) {
+  const wrapperUpdate = function () {
+    Dep.activeUpdate = wrapperUpdate;
+    update();
+    Dep.activeUpdate = null;
+  };
   // 立即执行一次，进行依赖收集
-  wrapperUpdate()
-}
+  wrapperUpdate();
+};
 
 // 测试
 const data = {
-  count:1
-}
+  count: 1,
+};
 // 劫持
-observe(data)
+observe(data);
 // 回调
-autorun(()=>{
-  console.log(`update:${data.count}`)
-})
+autorun(() => {
+  console.log(`update:${data.count}`);
+});
 // 修改
-data.count++
-data.count++
-
+data.count++;
+data.count++;
 ```

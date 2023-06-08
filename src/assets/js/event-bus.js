@@ -2,7 +2,7 @@
  * @Author liangjun
  * @LastEditors liangjun
  * @Date 2020-07-17 17:05:43
- * @LastEditTime 2021-05-26 15:37:45
+ * @LastEditTime 2023-06-08 14:56:07
  * @Description 发布与订阅
  */
 
@@ -82,26 +82,4 @@ bus.addListener('timeout', function two(params) {
 
 setInterval(() => {
   bus.emit('timeout', Date.now());
-}, 1000);
-
-// 浏览器内 可直接使用下列方式
-
-// 基础事件
-const timeoutEvent = new Event('timeout');
-addEventListener('timeout', function one() {
-  console.log('webkit timeout');
-});
-
-// 自定义事件 携带参数
-const paramsEvent = new CustomEvent('paramstimeout', {
-  detail: Date.now(),
-});
-addEventListener('paramstimeout', function two(event) {
-  console.log(event.detail);
-});
-
-// 触发
-setTimeout(() => {
-  dispatchEvent(timeoutEvent);
-  dispatchEvent(paramsEvent);
 }, 1000);

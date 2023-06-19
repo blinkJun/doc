@@ -534,9 +534,19 @@ function doc() {
           text: '文件匹配-glob',
           link: '/md/其他/glob',
         },
+      ],
+    },
+    {
+      text: 'GIS',
+      collapsed: true,
+      items: [
         {
           text: '地图概念',
-          link: '/md/其他/地图概念',
+          link: '/md/GIS/地图概念',
+        },
+        {
+          text: 'openlayers',
+          link: '/md/GIS/openlayers',
         },
       ],
     },

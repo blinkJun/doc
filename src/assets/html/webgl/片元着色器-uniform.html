@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>顶点着色器-attribute</title>
+  <style>
+    canvas{
+      background-color: #eee;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas></canvas>
+  <script type="module">
+    import initProgram from './lib/program-init.js'
+    const canvas = document.querySelector('canvas')
+    const gl = canvas.getContext('webgl')
+
+    const VERTEX_SHADER_SOURCE = `
+      attribute vec4 aPosition;
+      void main() {
+        gl_Position = aPosition;
+        gl_PointSize = 10.0;
+      }
+    `
+      // 低精度：lowp 中精度：mediump 高精度：highp
+    const FRAGMENT_SHADER_SOURCE = `
+      precision mediump float;
+      uniform vec4 uColor;
+      void main() {
+        gl_FragColor = uColor;
+      }
+    `
+
+    const program = initProgram(gl, VERTEX_SHADER_SOURCE, FRAGMENT_SHADER_SOURCE)
+
+
+    // 返回变量的存储地址
+    const uColor = gl.getUniformLocation(program,'uColor')
+
+    // 赋值
+    gl.uniform4f(uColor,-0.5,-0.5,0.0,1.0);
+
+    // uniform1f uniform2f uniform3f 传入参数数量不同
+    // 当使用 uniform1f 时，应该使用 float 而不是vec1来定义变量，使用float后变量被定义为浮点数，可以作为值直接在 gl_FragColor 中使用
+
+    // 赋值后需要重新绘制
+    gl.drawArrays(gl.POINTS, 0, 1)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绘制一个点</title>
+</head>
+
+<body>
+  <canvas></canvas>
+  <script type="module" >
+    import initProgram from './lib/program-init.js'
+    const canvas = document.querySelector('canvas')
+    const gl = canvas.getContext('webgl')
+
+    // 顶点着色器源码
+    const VERTEX_SHADER_SOURCE = `
+      void main() {
+        // 点的坐标
+        gl_Position = vec4(0.0,0.0,0.0,1.0);
+        // 点的大小
+        gl_PointSize = 10.0;
+      }
+    `
+
+    // 片元着色器源码
+    const FRAGMENT_SHADER_SOURCE = `
+      void main() {
+        // 颜色
+        gl_FragColor = vec4(1.0,0.0,0.0,1.0);
+      }
+    `
+
+    // 在顶点着色器中 vec4 代表： x,y,z,w 其次坐标(x/w,y/w,z/w)
+    // 在片元着色器中 vec4 代表：r,g,b,a
+
+    const program = initProgram(gl, VERTEX_SHADER_SOURCE, FRAGMENT_SHADER_SOURCE)
+
+    // 执行绘制
+
+    // 绘制点
+    gl.drawArrays(gl.POINTS, 0, 1)
+    // 绘制线段
+    // gl.drawArrays(gl.LINES, 0, 1)
+    // 绘制三角形
+    // gl.drawArrays(gl.TRIANGLES, 0, 1)
+  </script>
+</body>
+
+</html>

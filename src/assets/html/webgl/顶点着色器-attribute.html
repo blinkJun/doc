@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>顶点着色器-attribute</title>
+  <style>
+    canvas{
+      background-color: #eee;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas></canvas>
+  <script type="module">
+    import initProgram from './lib/program-init.js'
+    const canvas = document.querySelector('canvas')
+    const gl = canvas.getContext('webgl')
+
+    const VERTEX_SHADER_SOURCE = `
+      attribute vec4 aPosition;
+      void main() {
+        gl_Position = aPosition;
+        gl_PointSize = 10.0;
+      }
+    `
+
+    const FRAGMENT_SHADER_SOURCE = `
+      void main() {
+        gl_FragColor = vec4(1.0,0.0,0.0,1.0);
+      }
+    `
+
+    const program = initProgram(gl, VERTEX_SHADER_SOURCE, FRAGMENT_SHADER_SOURCE)
+
+
+    // 返回变量的存储地址
+    const aPosition = gl.getAttribLocation(program,'aPosition')
+
+    // 赋值
+    gl.vertexAttrib4f(aPosition,0.5,0.5,0.0,1.0);
+
+    // vertexAttrib1f vertexAttrib2f vertexAttrib3f 传入参数数量不同
+
+    // 赋值后需要重新绘制
+    gl.drawArrays(gl.POINTS, 0, 1)
+  </script>
+</body>
+
+</html>

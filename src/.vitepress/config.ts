@@ -120,6 +120,10 @@ function doc() {
           text: '设计模式',
           link: '/md/ECMAScript/设计模式',
         },
+        {
+          text: 'WebGL',
+          link: '/md/ECMAScript/WebGL',
+        },
       ],
     },
     {

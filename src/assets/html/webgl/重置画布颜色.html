@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webgl</title>
+</head>
+
+<body>
+  <canvas></canvas>
+  <script>
+    const canvas = document.querySelector('canvas')
+    const gl = canvas.getContext('webgl')
+    // 设置清空颜色缓存时的颜色值
+    gl.clearColor(1, 0, 0, 0.5)
+    // 使用预设值清空缓冲区
+    gl.clear(gl.COLOR_BUFFER_BIT)
+  </script>
+</body>
+
+</html>

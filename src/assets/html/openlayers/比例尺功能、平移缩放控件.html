@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比例尺功能、平移缩放控件</title>
+    <link rel="stylesheet" href="./style/ol.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="./lib/ol.js"></script>
+    <script type="module">
+        import initMap from './lib/init-bmap.js';
+        const { getVectorContext } = ol.render
+        const Feature = ol.Feature
+        const Point = ol.geom.Point
+        const VectorSource = ol.source.Vector
+        const { Tile, Vector } = ol.layer
+        const { Style, Circle, Fill, Stroke, Icon } = ol.style
+        const ScaleLine = ol.control.ScaleLine
+
+        const map = initMap()
+
+        // 创建一个 ScaleLine 控件实例
+        const scaleLineControl = new ScaleLine({
+            // 设置比例尺单位为度量制（metric）
+            units: 'metric'
+        });
+
+        // 添加 ScaleLine 控件到地图中
+        map.addControl(scaleLineControl);
+    </script>
+</body>
+
+</html>

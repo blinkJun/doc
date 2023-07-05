@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绘制行政区域</title>
+    <link rel="stylesheet" href="./style/ol.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh
+        }
+
+        .actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .actions button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <div class="actions">
+        <select class="select-address">
+            <option value="" selected>请选择区域</option>
+            <option value="450000000000" data-center="[108.358224, 23.404248]" data-level="2">广西</option>
+            <option value="450100000000" data-center="[108.320004, 22.82402]" data-level="3">南宁</option>
+            <option value="450200000000" data-center="[109.411703, 24.314617]" data-level="3">柳州</option>
+        </select>
+        <button class="btn-remove" type="button">清除</button>
+    </div>
+    <script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="./lib/ol.js"></script>
+    <script type="module">
+        import initMap from './lib/init-bmap.js';
+        const { getVectorContext } = ol.render
+        const Feature = ol.Feature
+        const Point = ol.geom.Point
+        const VectorSource = ol.source.Vector
+        const { Tile, Vector } = ol.layer
+        const { Style, Circle, Fill, Stroke, Icon } = ol.style
+        const GeoJSON = ol.format.GeoJSON
+
+        const map = initMap()
+
+        // 创建一个矢量资源组
+        const vectorSource = new VectorSource()
+
+        // 创建一个矢量图层存放点
+        const vectorLayer = new Vector({
+            source: vectorSource,
+        })
+        map.addLayer(vectorLayer)
+
+        let areaFeatures
+        const levelMap = {
+            1: 5,
+            2: 8,
+            3: 9
+        }
+        const clearArea = () => {
+            if (areaFeatures) {
+                areaFeatures.forEach((feature) => {
+                    vectorSource.removeFeature(feature)
+                })
+                areaFeatures.length = 0
+            }
+        }
+        const drawArea = (code, center, level) => {
+            fetch(`http://111.12.91.15:28802/map/geojson/${code}.json`, {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                method: 'GET'
+            }).then(res => {
+                res.json().then(data => {
+                    // 清除原边界
+                    clearArea()
+                    // 生成要素
+                    const geojsonFormat = new GeoJSON();
+                    data.features.forEach(function (feature) {
+                        const coordinates = feature.geometry.coordinates;
+                        const transformedCoordinates = coordinates.map(coordinateList => {
+                            return coordinateList.map((coordinate) => {
+                                return coordinate.map(item => {
+                                    return ol.proj.transform(
+                                        item,
+                                        "BD:09",
+                                        "BD:09-Meter"
+                                    )
+                                })
+                            })
+                        });
+                        feature.geometry.coordinates = transformedCoordinates;
+                    });
+                    areaFeatures = geojsonFormat.readFeatures(data);
+                    // 添加到资源组
+                    vectorSource.addFeatures(areaFeatures);
+
+                    // 设置中心点
+                    const mapView = map.getView()
+                    mapView.animate({ zoom: levelMap[level] }, { center });
+                })
+            })
+        }
+        document.querySelector('.btn-remove').addEventListener('click', clearArea)
+        document.querySelector('.select-address').addEventListener('change', event => {
+            const areaCode = event.target.value
+            if (areaCode) {
+                const options = Array.from(event.target.querySelectorAll('option'))
+                const current = options.find(option => option.value === areaCode)
+                drawArea(areaCode, ol.proj.transform(
+                    JSON.parse(current.dataset.center),
+                    "BD:09",
+                    "BD:09-Meter"
+                ), current.dataset.level)
+            }
+        })
+    </script>
+</body>
+
+</html>

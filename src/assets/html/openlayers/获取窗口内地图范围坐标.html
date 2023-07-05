@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取窗口内地图范围坐标</title>
+    <link rel="stylesheet" href="./style/ol.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh
+        }
+
+        .actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .actions button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <div class="actions">
+        <button class="btn-compute" type="button">查询当前视口坐标</button>
+    </div>
+    <script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="./lib/ol.js"></script>
+    <script type="module">
+        import initMap from './lib/init-bmap.js';
+        const { getVectorContext } = ol.render
+        const Feature = ol.Feature
+        const Point = ol.geom.Point
+        const VectorSource = ol.source.Vector
+        const { Tile, Vector } = ol.layer
+        const { Style, Circle, Fill, Stroke, Icon } = ol.style
+
+        const map = initMap()
+
+        document.querySelector('.btn-compute').addEventListener('click', () => {
+            const extent = map.getView().calculateExtent(map.getSize());
+            const formatExtent = [
+                ...ol.proj.transform(
+                    [extent[0], extent[1]],
+                    "BD:09-Meter",
+                    "BD:09"
+                ),
+                ...ol.proj.transform(
+                    [extent[2], extent[3]],
+                    "BD:09-Meter",
+                    "BD:09"
+                )
+            ]
+            alert(`[minx, miny, maxx, maxy]：${formatExtent}`)
+        })
+    </script>
+</body>
+
+</html>

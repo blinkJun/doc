@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多边形</title>
+    <link rel="stylesheet" href="./style/ol.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh
+        }
+
+        .actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .actions button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <div class="actions">
+        <button class="btn-delete" type="button" style="display: none;">删除选中多边形</button>
+        <button class="btn-create" type="button">绘制多边形</button>
+        <button class="btn-add" type="button">直接添加一个多边形</button>
+    </div>
+    <script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="./lib/ol.js"></script>
+    <script type="module">
+        import initMap from './lib/init-bmap.js';
+        const { getVectorContext } = ol.render
+        const Feature = ol.Feature
+        const Point = ol.geom.Point
+        const VectorSource = ol.source.Vector
+        const { Tile, Vector } = ol.layer
+        const { Style, Circle, Fill, Stroke, Icon } = ol.style
+        const { Draw, Select, Modify } = ol.interaction
+        const Polygon = ol.geom.Polygon
+
+        const map = initMap()
+
+        // 创建一个矢量资源组
+        const vectoSource = new VectorSource()
+
+        // 创建一个矢量图层存放点
+        const vectorLayer = new Vector({
+            source: vectoSource,
+            style: new Style({
+                fill: new Fill({
+                    color: 'rgba(255, 255, 255, 0.4)'
+                }),
+                stroke: new Stroke({
+                    color: 'skyblue',
+                    width: 2
+                })
+            })
+        })
+        map.addLayer(vectorLayer)
+
+        // 操作按钮
+        const btnDel = document.querySelector('.btn-delete')
+        const btnCreate = document.querySelector('.btn-create')
+        const btnAdd = document.querySelector('.btn-add')
+
+        // 创建可选交互，图形可以被选中
+        let selectedFeature
+        const selectInteraction = new Select({
+            // 禁用多选
+            multi: false
+        })
+        // 选中时更新当前选中图形
+        selectInteraction.on('select', (event) => {
+            selectedFeature = event.selected[0]
+            if (selectedFeature) {
+                btnDel.style.display = 'inline-block'
+            } else {
+                btnDel.style.display = 'none'
+            }
+        })
+        // 将交互添加至地图
+        map.addInteraction(selectInteraction)
+
+        // 创建可编辑交互，
+        const modifyInteraction = new Modify({
+            // 选中的图形可编辑
+            features: selectInteraction.getFeatures()
+        })
+        // 监听 modifyend 事件，当结束编辑时获取多边形的坐标集合
+        modifyInteraction.on('modifyend', function (event) {
+            // 获取多边形的边界和内部边界集合
+            const feature = event.features.getArray()[0];
+            const polygon = feature.getGeometry();
+            const coordinates = polygon.getCoordinates()[0].map(item => ol.proj.transform(
+                item,
+                "BD:09-Meter",
+                "BD:09"
+            ));
+            console.log(coordinates);
+        });
+
+        // 将交互添加至地图
+        map.addInteraction(modifyInteraction)
+
+        // 开始多边形绘制
+        const startDrawPolygon = (polyCoords) => {
+            // 选择交互先禁用
+            selectInteraction.setActive(false)
+
+            // 定义绘制样式
+            const style = new Style({
+                fill: new Fill({
+                    color: 'rgba(255, 255, 255, 0.4)'
+                }),
+                stroke: new Stroke({
+                    color: '#ffcc33',
+                    width: 2
+                }),
+                image: new Circle({
+                    radius: 7,
+                    fill: new Fill({
+                        color: '#ffcc33'
+                    })
+                })
+            })
+
+            // 创建多边形绘制交互
+            const drawInteraction = new Draw({
+                source: vectorLayer.getSource(),
+                type: 'Polygon',
+                // 设置绘制完成后的样式
+                style: new Style({
+                    fill: new Fill({
+                        color: 'rgba(255, 255, 255, 0.4)'
+                    }),
+                    stroke: new Stroke({
+                        color: '#ffcc33',
+                        width: 2
+                    }),
+                    image: new Circle({
+                        radius: 7,
+                        fill: new Fill({
+                            color: '#ffcc33'
+                        })
+                    })
+                })
+            })
+            // 添加交互至地图
+            map.addInteraction(drawInteraction)
+
+            // 绘制完成后事件
+            drawInteraction.on('drawend', (event) => {
+                // 关闭绘制交互
+                drawInteraction.setActive(false)
+                map.removeInteraction(drawInteraction)
+                // 启用选择交互
+                selectInteraction.setActive(true)
+
+                // 获取多边形的坐标集合
+                const feature = event.feature;
+                const polygon = feature.getGeometry();
+                const coordinates = polygon.getCoordinates()[0].map(item => ol.proj.transform(
+                    item,
+                    "BD:09-Meter",
+                    "BD:09"
+                ));
+                console.log(coordinates);
+            })
+
+            if (polyCoords) {
+                const polyFeature = new Feature({
+                    geometry: new Polygon(polyCoords),
+                })
+                vectoSource.addFeature(polyFeature);
+
+                // 关闭绘制交互
+                drawInteraction.setActive(false)
+                map.removeInteraction(drawInteraction)
+                // 启用选择交互
+                selectInteraction.setActive(true)
+            }
+        }
+
+        // 删除选中的图形
+        const delPolygon = () => {
+            vectorLayer.getSource().removeFeature(selectedFeature)
+            selectedFeature = null
+            btnDel.style.display = 'none'
+        }
+
+        btnDel.addEventListener('click', delPolygon)
+        btnCreate.addEventListener('click', () => {
+            startDrawPolygon()
+        })
+        btnAdd.addEventListener('click', () => {
+            const cordStr = '108.37928810485103,22.814679938509663|108.38124641086213,22.812781095654344|108.38289929299995,22.814346810120874|108.3841748868237,22.816262287101505|108.38455217513777,22.816822540109328|108.38449827680718,22.817611432792752|108.38368980184848,22.818494199816865|108.3827465810633,22.818971164222994|108.38153386862524,22.81899387669899|108.38025827480149,22.818960564964552|108.38006064758936,22.81679755590632|108.37928810485103,22.814679938509663'
+            const polyCoords = [
+                cordStr.split('|').map(item => item.split(',')).map(item => ol.proj.transform(
+                    item,
+                    "BD:09",
+                    "BD:09-Meter"
+                ))
+            ]
+            startDrawPolygon(polyCoords)
+        })
+    </script>
+</body>
+
+</html>

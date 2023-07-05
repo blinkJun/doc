@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点</title>
+    <link rel="stylesheet" href="./style/ol.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh
+        }
+
+        canvas {
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="./lib/ol.js"></script>
+    <script type="module">
+        import initMap from './lib/init-bmap.js';
+        const { getVectorContext } = ol.render
+        const Feature = ol.Feature
+        const Point = ol.geom.Point
+        const VectorSource = ol.source.Vector
+        const { Tile, Vector } = ol.layer
+        const { Style, Circle, Fill, Stroke, Icon } = ol.style
+        const { Draw, Select, Modify } = ol.interaction
+
+        const map = initMap()
+
+        // 创建一个矢量资源组
+        const makerSource = new VectorSource()
+
+        // 创建一个矢量图层存放点
+        const makerLayer = new Vector({
+            source: makerSource,
+        })
+        map.addLayer(makerLayer)
+
+        // 创建点图形特征
+        const pointFeature = new Feature({
+            geometry: new Point(ol.proj.transform(
+                [108.34171638707808, 22.818581259540537],
+                "BD:09",
+                "BD:09-Meter"
+            ))
+        });
+
+        // 设置样式
+        const fill = new Fill({
+            color: 'blue',
+        });
+        const stroke = new Stroke({
+            color: 'skyblue',
+            width: 3,
+        });
+        pointFeature.setStyle(new Style({
+            image: new Circle({
+                fill: fill,
+                stroke: stroke,
+                radius: 10,
+            }),
+            zIndex: 2
+        }));
+
+        // 添加到矢量要素资源组
+        makerSource.addFeature(pointFeature)
+
+        // 创建可选交互，图形可以被选中
+        const selectInteraction = new Select({
+            // 禁用多选
+            multi: false,
+            // 选中样式
+            style: new Style({
+                image: new Circle({
+                    fill: new Fill({
+                        color: 'red',
+                    }),
+                    stroke: new Stroke({
+                        color: 'yellow',
+                        width: 3,
+                    }),
+                    radius: 10,
+                }),
+                zIndex: 2
+            })
+        })
+
+        // 选中或取消选中事件
+        selectInteraction.on('select', (event) => {
+            const selectedFeature = event.selected[0]
+            if (selectedFeature) {
+                // 选中图像坐标点：
+                const coordinate = ol.proj.transform(
+                    selectedFeature.getGeometry().getCoordinates(),
+                    "BD:09-Meter",
+                    "BD:09"
+                )
+                console.log(coordinate)
+            } else {
+                // 取消选中
+            }
+        })
+        // 将交互添加至地图
+        map.addInteraction(selectInteraction)
+    </script>
+</body>
+
+</html>

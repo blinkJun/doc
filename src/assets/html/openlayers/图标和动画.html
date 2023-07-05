@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图标和动画</title>
+    <link rel="stylesheet" href="./style/ol.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="./lib/ol.js"></script>
+    <script type="module">
+        import initMap from './lib/init-bmap.js';
+        const { getVectorContext } = ol.render
+        const Feature = ol.Feature
+        const Point = ol.geom.Point
+        const VectorSource = ol.source.Vector
+        const { Tile, Vector } = ol.layer
+        const { Style, Circle, Fill, Stroke, Icon } = ol.style
+
+        const map = initMap()
+
+        // 创建一个矢量资源组
+        const makerSource = new VectorSource()
+
+        // 创建一个矢量图层存放点
+        const makerLayer = new Vector({
+            source: makerSource,
+        })
+        map.addLayer(makerLayer)
+
+        // 创建点图形特征
+        const pointFeature = new Feature({
+            geometry: new Point(ol.proj.transform(
+                [108.34171638707808, 22.818581259540537],
+                "BD:09",
+                "BD:09-Meter"
+            ))
+        });
+        // 创建图标
+        const icon = new Icon({
+            anchor: [0.5, 1],
+            src: '../../images/location.png',
+            width: 40,
+            height: 40,
+        })
+        // 把图标添加到图形特征样式
+        pointFeature.setStyle(new Style({
+            image: icon,
+            zIndex: 2,
+        }));
+        // 添加到矢量要素资源组
+        makerSource.addFeature(pointFeature)
+
+        // 添加动画
+        const current = {
+            value: 0
+        }
+        anime({
+            targets: current,
+            value: 1,
+            direction: 'alternate',
+            loop: true,
+            duration: 500,
+            easing: function (el, i, total) {
+                return function (t) {
+                    return Math.pow(Math.sin(t * (i + 1)), total);
+                }
+            },
+            update: function () {
+                const next = [0, 20 * current.value]
+                // 更新图标的偏移量
+                icon.setDisplacement(next)
+                // 触发更新
+                pointFeature.changed()
+            }
+        });
+    </script>
+</body>
+
+</html>

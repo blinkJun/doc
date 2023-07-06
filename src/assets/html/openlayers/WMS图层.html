@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WMS图层</title>
+  <link rel="stylesheet" href="./style/ol.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      width: 100vw;
+      height: 100vh
+    }
+
+    .actions {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .actions button {
+      padding: 5px 10px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+  <script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="./lib/ol.js"></script>
+  <script type="module">
+    import initMap from './lib/init-bmap.js';
+
+    const map = initMap()
+
+    // WMS图层，只是一张图片
+    const WMSLayer = new ol.layer.Image({
+      source: new ol.source.ImageWMS({
+        projection:'EPSG:3857',
+        url: 'https://ahocevar.com/geoserver/wms',  // WMS服务的URL.
+        // WMS请求参数
+        params: {
+          'LAYERS': 'topp:states'    // 请求的图层名
+        },
+        ratio: 1,                    // 1表示请求的图像是地图视图的大小。
+        serverType: 'geoserver'        // 服务器类型
+      })
+    })
+
+    // tileWMS图层，wms的切片图层
+    const tileWMSLayer = new ol.layer.Tile({
+      // 注意这里用的是TileWMS类而不是ImageWMS类
+      source: new ol.source.TileWMS({
+        projection: 'EPSG:3857',
+        url: 'https://ahocevar.com/geoserver/wms',  // WMS服务的URL.
+        // WMS请求参数
+        params: {
+          'LAYERS': 'topp:states',    // 请求的图层名
+          'TILED': true
+        },
+        crossOrigin: 'anonymous',
+        serverType: 'geoserver',       // 服务器类型
+        transition: 5000               // 呈现不透明度转换的持续时间
+      })
+    })
+
+    map.getView().setCenter([-10997148, 4569099])
+    map.getView().setZoom(5)
+    map.addLayer(WMSLayer)
+    map.addLayer(tileWMSLayer)
+  </script>
+</body>
+
+</html>

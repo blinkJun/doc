@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WMTS图层</title>
+  <link rel="stylesheet" href="./style/ol.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      width: 100vw;
+      height: 100vh
+    }
+
+    .actions {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .actions button {
+      padding: 5px 10px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+  <script src="https://unpkg.com/gcoord/dist/gcoord.global.prod.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="./lib/ol.js"></script>
+  <script type="module">
+    import initMap, { wmtsTileGrid, EPSG3857, EPSG4490Point } from './lib/init-tmap.js';
+    const { getVectorContext } = ol.render
+    const Feature = ol.Feature
+    const Point = ol.geom.Point
+    const VectorSource = ol.source.Vector
+    const { Tile, Vector } = ol.layer
+    const { Style, Circle, Fill, Stroke, Icon } = ol.style
+    const { Draw, Select, Modify } = ol.interaction
+
+    const map = initMap();
+
+    // 矢量注记
+    const wmtsSource = new ol.source.WMTS({
+      url: "http://t0.tianditu.gov.cn/cva_w/wmts?tk=9dd6d5022dc0ec7b98fcd19ce218c62e",  // 天地图key去官网很容易申请
+      layer: 'cva',                  // 图层名
+      version: '1.0.0',                   // WMTS版本
+      // 投影坐标系矩阵集，一定要和WMTS capabilities文档中一致，否则会加载失败
+      matrixSet: 'w',
+      format: 'tiles',                // 图片格式
+      projection: EPSG3857,             // 投影坐标系
+      requestEncoding: 'KVP',             // 请求的编码方式，默认就是'KVP'
+      // 在WMTS capabilities文档中对应的样式名，一定要写，否则会加载失败
+      style: 'default',
+      tileGrid: wmtsTileGrid              // 投影坐标系
+    });
+
+    const wmtsLayer = new ol.layer.Tile({
+      source: wmtsSource
+    });
+
+    map.addLayer(wmtsLayer)
+
+
+    // 国家边界
+    const iboSource = new ol.source.WMTS({
+      url: "http://t0.tianditu.gov.cn/ibo_w/wmts?tk=9dd6d5022dc0ec7b98fcd19ce218c62e",  // 天地图key去官网很容易申请
+      layer: 'ibo',                  // 图层名
+      version: '1.0.0',                   // WMTS版本
+      // 投影坐标系矩阵集，一定要和WMTS capabilities文档中一致，否则会加载失败
+      matrixSet: 'w',
+      format: 'tiles',                // 图片格式
+      projection: EPSG3857,             // 投影坐标系
+      requestEncoding: 'KVP',             // 请求的编码方式，默认就是'KVP'
+      // 在WMTS capabilities文档中对应的样式名，一定要写，否则会加载失败
+      style: 'default',
+      tileGrid: wmtsTileGrid              // 投影坐标系
+    });
+
+    const iboLayer = new ol.layer.Tile({
+      source: iboSource
+    });
+
+    map.addLayer(iboLayer)
+
+
+    // 创建一个矢量资源组
+    const makerSource = new VectorSource()
+
+    // 创建一个矢量图层存放点
+    const makerLayer = new Vector({
+      source: makerSource,
+    })
+    map.addLayer(makerLayer)
+
+    // 创建点图形特征
+    const pointFeature = new Feature({
+      geometry: new Point(ol.proj.transform(
+        EPSG4490Point,
+        "EPSG:4490",
+        "EPSG:3857"
+      ))
+    });
+
+    // 设置样式
+    const fill = new Fill({
+      color: 'blue',
+    });
+    const stroke = new Stroke({
+      color: 'skyblue',
+      width: 3,
+    });
+    pointFeature.setStyle(new Style({
+      image: new Circle({
+        fill: fill,
+        stroke: stroke,
+        radius: 10,
+      }),
+      zIndex: 2
+    }));
+
+    // 添加到矢量要素资源组
+    makerSource.addFeature(pointFeature)
+  </script>
+</body>
+
+</html>

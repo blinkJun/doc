@@ -552,6 +552,10 @@ function doc() {
           text: 'openlayers',
           link: '/md/GIS/openlayers',
         },
+        {
+          text: '离线地图',
+          link: '/md/GIS/离线地图',
+        },
       ],
     },
     {
@@ -641,10 +645,6 @@ function doc() {
         {
           text: '打印页面中的元素',
           link: '/md/业务实现/打印页面中的元素',
-        },
-        {
-          text: '天地图',
-          link: '/md/业务实现/天地图',
         },
         {
           text: '文件上传',

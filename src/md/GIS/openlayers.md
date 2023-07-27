@@ -117,3 +117,59 @@ ol.proj.toLonLat([lon, lat]);
 // 指定坐标系
 ol.proj.toLonLat([lon, lat], 'EPSG:3857');
 ```
+
+## `demo`
+
+以下`demo`均为百度地图的`demo`，初始化地图的代码`init-bmap.js`如下：
+
+::: details
+<<< @/assets/html/openlayers/lib/init-bmap.js
+:::
+
+## `demo`-点
+
+::: details
+<<< @/assets/html/openlayers/点.html
+:::
+
+## `demo`-多边形样式绘制和编辑删除
+
+::: details
+<<< @/assets/html/openlayers/多边形.html
+:::
+
+## `demo`-圆形样式绘制和编辑删除
+
+::: details
+<<< @/assets/html/openlayers/圆形.html
+:::
+
+## `demo`-geojson
+
+::: details
+<<< @/assets/html/openlayers/绘制和查询行政区域.html
+:::
+
+## `demo`-窗口内地图范围坐标
+
+::: details
+<<< @/assets/html/openlayers/获取窗口内地图范围坐标.html
+:::
+
+## `demo`-比例尺功能、平移缩放控件
+
+::: details
+<<< @/assets/html/openlayers/比例尺功能、平移缩放控件.html
+:::
+
+## `demo`-图标和动画
+
+::: details
+<<< @/assets/html/openlayers/图标和动画.html
+:::
+
+## `demo`-自定义覆盖物，显示`html`结构
+
+::: details
+<<< @/assets/html/openlayers/自定义覆盖物.html
+:::

@@ -44,37 +44,34 @@
     margin: auto;
     @keyframes move {
       0% {
-        opacity: 1;
-        transform: translateX(-(12px + 5px) * 2);
-      }
-      14.28% {
         opacity: 0;
         transform: translateX(-(12px + 5px) * 3);
       }
-      28.57% {
+      14.28% {
         opacity: 0;
         transform: translateX((12px + 5px) * 3);
       }
-      100% {
+      57.12% {
         opacity: 1;
-        transform: translateX(-(12px + 5px) * 2);
+        transform: translateX(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-(12px + 5px) * 3);
       }
     }
     @keyframes scale {
       0% {
-        transform: scale(4/12);
+        transform: scale(0);
       }
       14.28% {
         transform: scale(0);
       }
-      28.57% {
-        transform: scale(0);
-      }
-      71.4% {
+      57.12% {
         transform: scale(1);
       }
       100% {
-        transform: scale(4/12);
+        transform: scale(0);
       }
     }
     &:first-child {

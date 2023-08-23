@@ -245,7 +245,7 @@ console.log(ob); // [Function: isPlainObject]
 
 ```bash
 # 修改默认源
-npm config set registry https://registry.npm.taobao.org
+npm config set registry https://registry.npmmirror.com
 # 查看配置信息
 npm config list
 ```

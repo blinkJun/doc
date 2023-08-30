@@ -651,6 +651,10 @@ function doc() {
           link: '/md/业务实现/文件上传',
         },
         {
+          text: '文件上传-切片',
+          link: '/md/业务实现/文件上传-切片',
+        },
+        {
           text: '文件上传-ali-oss',
           link: '/md/业务实现/文件上传-ali-oss',
         },

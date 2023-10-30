@@ -52,6 +52,7 @@
     "vitepress": "1.0.0-alpha.71"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.24",
     "git-cz": "^4.8.0"
   }
 }

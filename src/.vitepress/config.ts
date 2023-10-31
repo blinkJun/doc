@@ -667,6 +667,10 @@ function doc() {
           link: '/md/业务实现/抽奖转盘',
         },
         {
+          text: 'fabric',
+          link: '/md/业务实现/fabric',
+        },
+        {
           text: '小程序',
           collapsed: true,
           items: [

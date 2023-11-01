@@ -671,6 +671,10 @@ function doc() {
           link: '/md/业务实现/fabric',
         },
         {
+          text: '输入框模板',
+          link: '/md/业务实现/输入框模板',
+        },
+        {
           text: '小程序',
           collapsed: true,
           items: [

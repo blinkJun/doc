@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup>
-import { fabric } from 'fabric';
+// import { fabric } from 'fabric';
 import { onMounted, ref } from 'vue';
 
 const emit = defineEmits(['init']);
@@ -13,14 +13,18 @@ const wrapEl = ref(null);
 let fabricCanvas;
 
 const initFabric = () => {
-  const wrapHeight = wrapEl.value.offsetHeight;
-  const wrapWidth = wrapEl.value.offsetWidth;
-  fabricCanvas = new fabric.Canvas('select-rect-canvas', {
-    width: wrapWidth,
-    height: wrapHeight,
-    backgroundColor: 'transparent',
+  import('fabric').then((module) => {
+    // use code
+    const { fabric } = module.default;
+    const wrapHeight = wrapEl.value.offsetHeight;
+    const wrapWidth = wrapEl.value.offsetWidth;
+    fabricCanvas = new fabric.Canvas('select-rect-canvas', {
+      width: wrapWidth,
+      height: wrapHeight,
+      backgroundColor: 'transparent',
+    });
+    emit('init', fabricCanvas);
   });
-  emit('init', fabricCanvas);
 };
 
 onMounted(initFabric);

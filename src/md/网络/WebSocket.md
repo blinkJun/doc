@@ -119,7 +119,9 @@ Sec-WebSocket-Accept: server-random-string
 
 <<< @/assets/html/WebSocket/server-websocket.js{13-17}
 
-客户端和服务端配合进行心跳检测
+在服务端对客户端进行心跳检测可以清理不在线的客户端，释放资源，但是对于是否要实现客户端对服务端的心跳检测，我认为是不必要的，断连了再重连即可。
+
+若为了增强连接的稳定性，也可以实现客户端和服务端配合进行心跳检测：
 
 ::: details
 

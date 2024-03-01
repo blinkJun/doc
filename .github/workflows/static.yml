@@ -30,11 +30,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
       - name: Build
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: npm i pnpm@^7.29.0 -g --registry https://registry.npmmirror.com
+          cache: 'pnpm'
       - run: pnpm i
       - run: pnpm run docs:build
       - name: Setup Pages

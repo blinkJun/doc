@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: npm i pnpm@^7.29.0 -g --registry https://registry.npm.taobao.org
+      - run: npm i pnpm@^7.29.0 -g --registry https://registry.npmmirror.com
       - run: pnpm i
       - run: pnpm run docs:build
       - name: Setup Pages

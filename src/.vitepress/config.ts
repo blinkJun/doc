@@ -199,6 +199,10 @@ function doc() {
           link: '/md/网络/HTTPS',
         },
         {
+          text: 'WebSocket',
+          link: '/md/网络/WebSocket',
+        },
+        {
           text: 'GraphQL和RestfulAPI',
           link: '/md/网络/GraphQL和RestfulAPI',
         },
@@ -477,10 +481,6 @@ function doc() {
           link: '/md/NodeJs/Date和时区',
         },
         {
-          text: 'socket',
-          link: '/md/NodeJs/socket',
-        },
-        {
           text: 'pm2',
           link: '/md/NodeJs/pm2',
         },
@@ -568,51 +568,51 @@ function doc() {
       items: [
         {
           text: '脚手架介绍',
-          link: '/md/cli/脚手架介绍',
+          link: '/md/CLI/脚手架介绍',
         },
         {
           text: '基础架构',
-          link: '/md/cli/基础架构',
+          link: '/md/CLI/基础架构',
         },
         {
           text: '相关模块',
           collapsed: true,
           items: [
             {
-              text: 'cli-spinner',
-              link: '/md/cli/相关模块/cli-spinner',
+              text: 'CLI-spinner',
+              link: '/md/CLI/相关模块/cli-spinner',
             },
             {
               text: 'commander',
-              link: '/md/cli/相关模块/commander',
+              link: '/md/CLI/相关模块/commander',
             },
             {
               text: 'ejs',
-              link: '/md/cli/相关模块/ejs',
+              link: '/md/CLI/相关模块/ejs',
             },
             {
               text: 'import-local',
-              link: '/md/cli/相关模块/import-local',
+              link: '/md/CLI/相关模块/import-local',
             },
             {
               text: 'inrequirer',
-              link: '/md/cli/相关模块/inrequirer',
+              link: '/md/CLI/相关模块/inrequirer',
             },
             {
               text: 'kebab-case',
-              link: '/md/cli/相关模块/kebab-case',
+              link: '/md/CLI/相关模块/kebab-case',
             },
             {
               text: 'npminstall',
-              link: '/md/cli/相关模块/npminstall',
+              link: '/md/CLI/相关模块/npminstall',
             },
             {
               text: 'readline',
-              link: '/md/cli/相关模块/readline',
+              link: '/md/CLI/相关模块/readline',
             },
             {
               text: 'yargs',
-              link: '/md/cli/相关模块/yargs',
+              link: '/md/CLI/相关模块/yargs',
             },
           ],
         },
@@ -622,7 +622,7 @@ function doc() {
           items: [
             {
               text: '初始化项目',
-              link: '/md/cli/命令架构/初始化项目',
+              link: '/md/CLI/命令架构/初始化项目',
             },
           ],
         },

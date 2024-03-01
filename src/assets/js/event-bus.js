@@ -26,7 +26,7 @@
  * @param {String} eventName 发布的事件名称
  * @return {Boolean} 是否发布成功
  */
-class EventEmitter {
+export default class EventEmitter {
   constructor() {
     this.listeners = new Map();
   }

@@ -343,8 +343,48 @@ server.listen(3000);
 
 - 连接数少：客户端和服务端只有一个持久的`HTTP`连接
 - 数据实时性高：服务端可以实时推送数据到客户端
+- 默认断线重连
 
 缺点：
 
 - 单项通信：只允许服务端推送，不允许客户端
 - 代理限制：跟`WebSocket`一样，可能需要客户端重连
+- 一般传输文本，二进制需要编码后发送，`WebSocket`默认支持传送二进制数据
+
+`SSE`实现：
+
+主要实现在服务端：
+
+1. 首先设置`HTTP`响应头：
+```http
+Content-Type: text/event-stream
+Cache-Control: no-cache
+Connection: keep-alive
+```
+
+2. `message`
+
+每个消息的结构为：`[field]: value`，每个结构使用`\n`分割，每个消息体再使用`\n`分割
+
+> 每个消息必须发送`data`，否则不会触发事件。
+
+`field`有以下几种类型：
+
+  - `:`：注释
+  - `data`：消息的具体内容
+  - `event`：自定义事件，会触发客户端对应的事件，不设置则触发`message`事件
+  - `id`：此次消息的`id`，在客户端使用`lastEventId`获取
+  - `retry`：指定客户端重新发起连接的间隔
+
+::: details
+
+- 服务端
+
+<<< @/assets/html/server-send-events/server.js
+
+- 客户端
+
+<<< @/assets/html/server-send-events/event-source.html
+
+:::
+

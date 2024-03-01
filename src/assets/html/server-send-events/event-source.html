@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SSE Client</title>
+  </head>
+  <body>
+    <div id="sseData"></div>
+
+    <script>
+      const sseData = document.getElementById('sseData');
+      const eventSource = new EventSource('http://localhost:3000');
+
+      eventSource.onmessage = function (event) {
+        sseData.innerText = 'Server Time: ' + event.data;
+      };
+
+      // 监听自定义事件
+      eventSource.addEventListener('close', (e) => {
+        console.log(e);
+      });
+    </script>
+  </body>
+</html>

@@ -27,7 +27,7 @@
 
 第一个`webgl`应用，为三维画布重置画布颜色：
 
-<<< @/assets/html/webgl/重置画布颜色.html{html}
+<<< @/assets/demos/webgl/重置画布颜色.html{html}
 
 ## 着色器（渲染管线）
 
@@ -40,11 +40,11 @@
 
 创建一个着色器项目初始化代码：
 
-<<< @/assets/html/webgl/lib/program-init.js
+<<< @/assets/demos/webgl/lib/program-init.js
 
 绘制图形：
 
-<<< @/assets/html/webgl/绘制一个点.html
+<<< @/assets/demos/webgl/绘制一个点.html
 
 ## 坐标系
 
@@ -74,7 +74,7 @@
 
 通过变量修改着色器实现：
 
-<<< @/assets/html/webgl/顶点着色器-attribute.html
+<<< @/assets/demos/webgl/顶点着色器-attribute.html
 
 ### 变量声明：`uniform`
 
@@ -87,13 +87,13 @@
 
 通过变量修改着色器实现：
 
-<<< @/assets/html/webgl/片元着色器-uniform.html
+<<< @/assets/demos/webgl/片元着色器-uniform.html
 
 ## 鼠标事件
 
 获取鼠标所在位置的二维坐标：
 
-<<< @/assets/html/webgl/得到鼠标所在位置.html
+<<< @/assets/demos/webgl/得到鼠标所在位置.html
 
 ## 缓冲区对象
 

@@ -117,7 +117,7 @@ Sec-WebSocket-Accept: server-random-string
 
 在服务端使用协议推荐的方式对客户端进行心跳检测：
 
-<<< @/assets/html/WebSocket/server-websocket.js{13-17}
+<<< @/assets/demos/WebSocket/server-websocket.js{13-17}
 
 在服务端对客户端进行心跳检测可以清理不在线的客户端，释放资源，但是对于是否要实现客户端对服务端的心跳检测，我认为是不必要的，断连了再重连即可。
 
@@ -131,7 +131,7 @@ Sec-WebSocket-Accept: server-random-string
 
 - 服务端配合响应
 
-<<< @/assets/html/WebSocket/server-websocket.js{8}
+<<< @/assets/demos/WebSocket/server-websocket.js{8}
 
 :::
 
@@ -325,11 +325,11 @@ server.listen(3000);
 
 - 服务端
 
-<<< @/assets/html/long-polling/server-long-polling.js
+<<< @/assets/demos/long-polling/server-long-polling.js
 
 - 客户端
 
-<<< @/assets/html/long-polling/client-long-polling.html
+<<< @/assets/demos/long-polling/client-long-polling.html
 
 :::
 
@@ -380,11 +380,11 @@ Connection: keep-alive
 
 - 服务端
 
-<<< @/assets/html/server-send-events/server.js
+<<< @/assets/demos/server-send-events/server.js
 
 - 客户端
 
-<<< @/assets/html/server-send-events/event-source.html
+<<< @/assets/demos/server-send-events/event-source.html
 
 :::
 

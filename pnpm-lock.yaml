@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@blinkjun/utils':
-    specifier: ^1.4.0
-    version: 1.4.0
+    specifier: ^1.5.0
+    version: 1.5.0
   '@fancyapps/ui':
     specifier: ^5.0.24
     version: 5.0.33
@@ -67,6 +67,9 @@ devDependencies:
   vitepress:
     specifier: 1.0.0-alpha.71
     version: 1.0.0-alpha.71(@types/node@18.19.21)(less@4.2.0)(typescript@4.9.5)
+  ws:
+    specifier: ^8.16.0
+    version: 8.16.0
 
 packages:
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -324,10 +327,10 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@blinkjun/utils@1.4.0:
+  /@blinkjun/utils@1.5.0:
     resolution:
       {
-        integrity: sha512-fFdx2kICY1RpqWry8bv/wtaSKPpCw5S5D28cW/kcJzRf7fyF6qlisqNkYqlj/wtaNn/sn2evJbmC9H2CX04kVw==,
+        integrity: sha512-ZHMKdjvgtQIfjC1WJ0kCoO5K10+DgW8+Pj4JyELN0Y3SAJSbbwwC7sSkCbbsm+omGAUZAvTemPdmek9h18Ikxg==,
       }
     dev: false
 
@@ -6780,8 +6783,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dev: false
-    optional: true
 
   /xml-name-validator@4.0.0:
     resolution:

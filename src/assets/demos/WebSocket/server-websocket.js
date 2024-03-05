@@ -17,4 +17,12 @@ wss.on('connection', (client) => {
   });
 
   client.on('close', () => {});
+
+  setInterval(() => {
+    client.send(
+      JSON.stringify({
+        a: 'b',
+      })
+    );
+  }, 5000);
 });

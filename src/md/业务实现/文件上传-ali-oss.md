@@ -1,3 +1,3 @@
 # 使用`ali-oss`文件上传
 
-<<< @/assets/node/ali-oss.js
+<<< @/assets/demos/ali-oss/ali-oss.js

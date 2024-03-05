@@ -127,7 +127,7 @@ Sec-WebSocket-Accept: server-random-string
 
 - 客户端心跳检测
 
-<<< @/assets/js/websocket.js{123}
+<<< node_modules/@blinkjun/utils/lib/classes/websocket.js{233-243}
 
 - 服务端配合响应
 
@@ -263,43 +263,7 @@ server.listen(3000);
 
 ::: details
 
-- 实现
-
-  <<< @/assets/js/polling.js
-
-- 使用
-
-  ```js
-  const pollingInstance = new Polling({
-    // 轮询的请求
-    request: () => {
-      return api();
-    },
-    // 可选：在此判断是否继续轮询，不传默认持续轮询
-    needToPolling: (res) => {
-      const undoneCount = 1;
-      return undoneCount > 0;
-    },
-  });
-
-  // 每次轮询请求回来的数据更新到列表
-  pollingInstance.addListener('update', (res) => {
-    // 处理轮询响应
-    console.log(res);
-  });
-
-  // 轮询结束事件
-  pollingInstance.addListener('end', (res) => {
-    // 处理轮询响应
-    console.log(res);
-  });
-
-  // 启动轮询
-  pollingInstance.start();
-
-  // 停止轮询
-  pollingInstance.stop();
-  ```
+  <<< node_modules/@blinkjun/utils/lib/classes/polling.js
 
 :::
 
@@ -329,7 +293,7 @@ server.listen(3000);
 
 - 客户端
 
-<<< @/assets/demos/long-polling/client-long-polling.html
+<<< @/assets/demos/long-polling/client-long-polling.vue
 
 :::
 
@@ -387,4 +351,3 @@ Connection: keep-alive
 <<< @/assets/demos/server-send-events/event-source.html
 
 :::
-

@@ -24,7 +24,7 @@
 .card-obverse {
   width: 186.5px;
   height: 307px;
-  background: url(../images/card-obverse.png) no-repeat center;
+  background: url('../../images/card-obverse.png') no-repeat center;
   background-size: 100% auto;
   position: absolute;
   top: 5px;
@@ -36,7 +36,7 @@
 .card-positive {
   width: 186.5px;
   height: 307px;
-  background: url(../images/card-positive.png) no-repeat center;
+  background: url('../../images/card-positive.png') no-repeat center;
   background-size: 100% auto;
   position: absolute;
   top: 5px;

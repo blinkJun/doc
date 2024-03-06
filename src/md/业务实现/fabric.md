@@ -5,5 +5,5 @@
 <select-rect></select-rect>
 
 <script setup >
-import SelectRect from '../../assets/vue/fabric/select-rect.vue'
+import SelectRect from '../../assets/demos/fabric/select-rect.vue'
 </script>

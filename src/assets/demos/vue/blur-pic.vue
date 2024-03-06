@@ -9,7 +9,9 @@
   width: 100%;
   height: 600px;
   position: relative;
-  background: url('../images/poster.jpg') center top no-repeat;
+  background: url('../../images/poster.jpg') center top no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .card {
@@ -22,7 +24,7 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  box-shadow: 2px 2px 2px 3px rgba(22, 19, 19, 0.3),
+  box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.3),
     -2px 2px 2px 3px rgba(0, 0, 0, 0.1);
   padding: 20px;
   color: #fff;
@@ -32,7 +34,28 @@
 
   /* filter效果在边缘将会减弱，在使用margin溢出容器的同时使用这个属性将溢出的减弱效果覆盖 */
   overflow: hidden;
+}
+.card::after {
+  content: '';
 
-  backdrop-filter: blur(20px);
+  /* 伪元素作为毛玻璃和卡片背景 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+
+  /* filter效果在边缘将会减弱，将减弱的部分溢出容器，再使用overflow隐藏 */
+  margin: -20px;
+
+  /* 模糊 */
+  filter: blur(20px);
+
+  background: url('../../images/poster.jpg') center top no-repeat;
+  background-size: cover;
+
+  /* 与大背景重合 */
+  background-attachment: fixed;
 }
 </style>

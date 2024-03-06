@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@blinkjun/utils':
-    specifier: ^1.5.0
-    version: 1.5.0
+    specifier: ^1.7.0
+    version: 1.7.0
   '@fancyapps/ui':
     specifier: ^5.0.24
     version: 5.0.33
@@ -327,10 +327,10 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@blinkjun/utils@1.5.0:
+  /@blinkjun/utils@1.7.0:
     resolution:
       {
-        integrity: sha512-ZHMKdjvgtQIfjC1WJ0kCoO5K10+DgW8+Pj4JyELN0Y3SAJSbbwwC7sSkCbbsm+omGAUZAvTemPdmek9h18Ikxg==,
+        integrity: sha512-XxmjWsHFyNiXN2SxpDPW/7lrUlHRO+u44oYDJ1Uyzw+HkH1+P3AKmDCAaQX1RCYf0XnGVf9+3nvpGrwBhybPcg==,
       }
     dev: false
 

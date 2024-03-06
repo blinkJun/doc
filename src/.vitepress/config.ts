@@ -729,6 +729,10 @@ function doc() {
       collapsed: true,
       items: [
         {
+          text: '自适应高度输入框',
+          link: '/md/样式实现/自适应高度输入框',
+        },
+        {
           text: '毛玻璃',
           link: '/md/样式实现/毛玻璃',
         },

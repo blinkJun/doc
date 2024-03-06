@@ -127,7 +127,7 @@ Sec-WebSocket-Accept: server-random-string
 
 - 客户端心跳检测
 
-<<< node_modules/@blinkjun/utils/lib/classes/websocket.js{233-243}
+<<< ../../../node_modules/@blinkjun/utils/lib/classes/websocket.js{233-243}
 
 - 服务端配合响应
 
@@ -263,7 +263,7 @@ server.listen(3000);
 
 ::: details
 
-  <<< node_modules/@blinkjun/utils/lib/classes/polling.js
+  <<< ../../../node_modules/@blinkjun/utils/lib/classes/polling.js
 
 :::
 

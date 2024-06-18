@@ -729,6 +729,10 @@ function doc() {
       collapsed: true,
       items: [
         {
+          text: '自动高度适应比例列表',
+          link: '/md/样式实现/自动高度适应比例列表',
+        },
+        {
           text: '自适应高度输入框',
           link: '/md/样式实现/自适应高度输入框',
         },

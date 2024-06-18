@@ -10,7 +10,6 @@
   </ul>
 </template>
 <script setup>
-import { randomColor } from '@blinkjun/utils';
 import { computed } from 'vue';
 const props = defineProps({
   list: {
@@ -28,7 +27,7 @@ function getItemStyle(item) {
     item: {
       width,
       flexGrow,
-      backgroundColor: randomColor(),
+      backgroundColor: 'skyblue',
     },
     placeholder: {
       paddingBottom,

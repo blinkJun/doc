@@ -729,6 +729,10 @@ function doc() {
       collapsed: true,
       items: [
         {
+          text: '可拖拽更改盒模型大小',
+          link: '/md/样式实现/可拖拽更改盒模型大小',
+        },
+        {
           text: '自动高度适应比例列表',
           link: '/md/样式实现/自动高度适应比例列表',
         },

@@ -1,11 +1,14 @@
 <template>
   <div ref="wrapEl" class="select-rect">
-    <canvas id="select-rect-canvas"></canvas>
+    <canvas :id="canvasId"></canvas>
   </div>
 </template>
 <script setup>
+import { useId } from 'vue';
 // import { fabric } from 'fabric';
 import { onMounted, ref } from 'vue';
+
+const canvasId = `fabric-canvas-${useId()}`;
 
 const emit = defineEmits(['init']);
 
@@ -18,10 +21,9 @@ const initFabric = () => {
     const { fabric } = module.default;
     const wrapHeight = wrapEl.value.offsetHeight;
     const wrapWidth = wrapEl.value.offsetWidth;
-    fabricCanvas = new fabric.Canvas('select-rect-canvas', {
+    fabricCanvas = new fabric.Canvas(canvasId, {
       width: wrapWidth,
       height: wrapHeight,
-      backgroundColor: 'transparent',
     });
     emit('init', fabricCanvas);
   });

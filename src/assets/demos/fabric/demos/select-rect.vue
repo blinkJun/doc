@@ -2,7 +2,7 @@
   <fabric-canvas @init="onFabricCanvasInit"></fabric-canvas>
 </template>
 <script setup>
-import FabricCanvas from './canvas.vue';
+import FabricCanvas from '../canvas.vue';
 // import initControls from './handles/initControls';
 // import initControlsRotate from './handles/initControlsRotate';
 // import useMouseCreateRect, { maskOnResize } from './handles/useMouseCreateRect';
@@ -12,7 +12,7 @@ let changeSelectType = null;
 
 async function customRectControl(fabricCanvas, rect) {
   const { default: useConstomAction } = await import(
-    './handles/useCustomActions'
+    '../handles/useCustomActions'
   );
   // 自定义一个操作栏，包含确认和删除按钮
   const { clear } = useConstomAction(fabricCanvas, rect, {
@@ -36,9 +36,9 @@ async function onFabricCanvasInit(fabricCanvas) {
     { default: initControlsRotate },
     { default: useMouseCreateRect, maskOnResize },
   ] = await Promise.all([
-    import('./handles/initControls'),
-    import('./handles/initControlsRotate'),
-    import('./handles/useMouseCreateRect'),
+    import('../handles/initControls'),
+    import('../handles/initControlsRotate'),
+    import('../handles/useMouseCreateRect'),
   ]);
   // 可以使用鼠标框选生成矩形
   const { typeChange } = useMouseCreateRect(fabricCanvas, (rect) => {

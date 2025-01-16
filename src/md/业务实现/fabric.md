@@ -2,7 +2,7 @@
 
 `fabric`是一个`javascript canvas`工具库，如果你打算使用`canvas`进行`2d`绘图，推荐使用`fabric`。
 
-官方文档比较难看懂，推荐看此作者的文章：[Fabric.js 从入门到**\_\_\_\_**](https://juejin.cn/post/7026941253845516324)
+官方文档比较难看懂，推荐看此作者的文章：[Fabric.js 从入门到\_\_\_\_](https://juejin.cn/post/7026941253845516324)
 
 进阶：更推荐看此仓库源码[vue-fabric-editor](https://github.com/ikuaitu/vue-fabric-editor)
 
@@ -20,13 +20,21 @@
 
   <<< @/assets/demos/fabric/handles/translate.js
 
+  <<< @/assets/demos/fabric/handles/controls.js
+
+  <<< @/assets/demos/fabric/handles/control-rotate.js
+
+  <<< @/assets/demos/fabric/handles/control-del.js
+
+  <<< @/assets/demos/fabric/handles/control-lock.js
+
   <<< @/assets/demos/fabric/canvas.vue
 
   :::
 
 ## 在画布中进行框选
 
-<select-rect></select-rect>
+<!-- <select-rect></select-rect> -->
 
 <script setup >
 import fabricBasic from '../../assets/demos/fabric/demos/fabric-basic.vue'

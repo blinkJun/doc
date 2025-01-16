@@ -25,7 +25,7 @@ const initFabric = () => {
       width: wrapWidth,
       height: wrapHeight,
     });
-    emit('init', fabricCanvas);
+    emit('init', fabricCanvas, fabric);
   });
 };
 

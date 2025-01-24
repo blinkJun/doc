@@ -14,6 +14,7 @@
 import bgTransparent from '../../../images/bg-transparent.png';
 import FabricCanvas from '../canvas.vue';
 import FabricZoom from '../handles/zoom';
+import FabricSelection from '../handles/selection';
 import FabricTranslate from '../handles/translate';
 import {
   customDefaultContorls,
@@ -52,6 +53,15 @@ async function onFabricCanvasInit(canvas, fabricModule) {
   const translateInstance = new FabricTranslate(canvas);
   translateInstance.onChange((vpt) => {
     // console.log(vpt)
+  });
+
+  // 选中元素回调
+  const selectionInstance = new FabricSelection(canvas);
+  selectionInstance.onSelect((objects) => {
+    // console.log(objects)
+  });
+  selectionInstance.onClear(() => {
+    // console.log('clear')
   });
 }
 

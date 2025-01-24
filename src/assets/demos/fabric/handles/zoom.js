@@ -1,7 +1,6 @@
 export default class FabricZoom {
-  events = [];
-  hotkeys = [];
   constructor(canvas, options = { byPoint: true }) {
+    this.events = [];
     this.hotkeys = options.hotkeys || ['Ctrl'];
     const byPoint = options.byPoint;
     // 缩放，监听鼠标滚轮事件

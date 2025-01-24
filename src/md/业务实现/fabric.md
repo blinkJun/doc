@@ -20,6 +20,8 @@
 
   <<< @/assets/demos/fabric/handles/translate.js
 
+  <<< @/assets/demos/fabric/handles/selection.js
+
   <<< @/assets/demos/fabric/handles/controls.js
 
   <<< @/assets/demos/fabric/handles/control-rotate.js
@@ -39,4 +41,9 @@
 <script setup >
 import fabricBasic from '../../assets/demos/fabric/demos/fabric-basic.vue'
 import SelectRect from '../../assets/demos/fabric/demos/select-rect.vue'
+
+// TODO:快捷键
+// TODO:撤销重做
+// TODO:工作台
+// TODO:应用
 </script>

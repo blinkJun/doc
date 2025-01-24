@@ -1,10 +1,7 @@
 import hotkeys from 'hotkeys-js';
 export default class FabricTranslate {
-  dragMode = false;
-  canvas = null;
-  hotkeys = [];
-  events = [];
   constructor(canvas, options = {}) {
+    this.events = [];
     this.dragMode = false;
     this.canvas = canvas;
     this.selection = canvas.selection;

@@ -1,52 +1,74 @@
 <template>
-  <fabric-canvas @init="onFabricCanvasInit"></fabric-canvas>
+  <fabric-canvas
+    style="margin-top: 10px"
+    @init="onFabricCanvasInit"
+  ></fabric-canvas>
 </template>
 <script setup>
 import FabricCanvas from '../canvas.vue';
-// import initControls from './handles/initControls';
-// import initControlsRotate from './handles/initControlsRotate';
-// import useMouseCreateRect, { maskOnResize } from './handles/useMouseCreateRect';
-// import useConstomAction from './handles/useCustomActions.js';
+import bgTransparent from '../../../images/bg-transparent.png';
+import useCornerRotateControls from '../controls/rotate';
+import useDelControl from '../controls/del';
+import useConfirmControl from '../controls/confirm';
+import useMouseCreateRect from '../handles/useMouseCreateRect';
+import useResizeMask from '../handles/useResizeMask';
+import { customDefaultContorls } from '../controls/default';
 
-let changeSelectType = null;
+let fabricCanvas = null;
+let fabric = null;
 
-async function customRectControl(fabricCanvas, rect) {
-  const { default: useConstomAction } = await import(
-    '../handles/useCustomActions'
-  );
-  // 自定义一个操作栏，包含确认和删除按钮
-  const { clear } = useConstomAction(fabricCanvas, rect, {
-    onRemove: () => {
-      fabricCanvas.remove(rect);
-      setTimeout(() => {
-        // 被删除后可以再次生成
-        changeSelectType('rect');
-      }, 500);
-    },
-    onCollect: () => {
-      fabricCanvas.discardActiveObject();
-    },
-  });
+// 使用自定义控件
+function useConstomContols(delCallback) {
+  // 覆盖默认控件
+  customDefaultContorls();
+  // 新自定义旋转控件
+  useCornerRotateControls(fabricCanvas);
+  // 新增删除控件
+  useDelControl(fabricCanvas, delCallback);
+  fabricCanvas.requestRenderAll();
 }
 
-async function onFabricCanvasInit(fabricCanvas) {
-  // vitepress服务端渲染，通过动态导入方式引入fabric对应的脚本
-  const [
-    { default: initControls },
-    { default: initControlsRotate },
-    { default: useMouseCreateRect, maskOnResize },
-  ] = await Promise.all([
-    import('../handles/initControls'),
-    import('../handles/initControlsRotate'),
-    import('../handles/useMouseCreateRect'),
-  ]);
+async function onFabricCanvasInit(canvas, fabricModule) {
+  fabricCanvas = canvas;
+  fabric = fabricModule;
+  let onCreateRectTypeChange;
+  // 设置背景
+  canvas.setBackgroundColor(
+    {
+      source: bgTransparent,
+      repeat: 'repeat',
+    },
+    canvas.renderAll.bind(canvas)
+  );
+
+  // 使用自定义控件
+  useConstomContols(() => {
+    // 被删除后可以再次生成
+    setTimeout(() => {
+      onCreateRectTypeChange && onCreateRectTypeChange('rect');
+    }, 500);
+  });
+
+  // 即将使用自定义确认控件
+  const { setControlToObject, removeControlFromObject } = useConfirmControl();
+
   // 可以使用鼠标框选生成矩形
   const { typeChange } = useMouseCreateRect(fabricCanvas, (rect) => {
-    // 矩形选中时显示遮罩层
-    maskOnResize(fabricCanvas, rect);
-
-    // 再次自定义矩形控制器
-    customRectControl(fabricCanvas, rect);
+    // 为元素设置遮罩层，遮罩层随元素变化
+    useResizeMask(fabricCanvas, rect);
+    // 添加确认控件设置
+    setControlToObject(rect, {
+      onCancel: () => {
+        fabricCanvas.remove(rect);
+        setTimeout(() => {
+          // 被删除后可以再次生成
+          typeChange('rect');
+        }, 500);
+      },
+      onConfirm: () => {
+        fabricCanvas.discardActiveObject();
+      },
+    });
 
     // 只能绘制一次,恢复为点选模式
     setTimeout(() => {
@@ -55,23 +77,7 @@ async function onFabricCanvasInit(fabricCanvas) {
     }, 500);
   });
 
-  changeSelectType = typeChange;
-
-  // 自定义矩形操作样式
-  initControls(
-    fabricCanvas,
-    () => {},
-    (objects) => {
-      console.log('del');
-      // 被删除后可以再次生成
-      setTimeout(() => {
-        typeChange('rect');
-      }, 500);
-    }
-  );
-
-  // 自定义4个角旋转样式
-  initControlsRotate(fabricCanvas);
+  onCreateRectTypeChange = typeChange;
 
   fabricCanvas.renderAll();
 }

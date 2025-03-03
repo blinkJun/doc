@@ -1,31 +1,5 @@
 import { fabric } from 'fabric';
 import useClipMask from './useClipMask';
-
-export function maskOnResize(canvas, object) {
-  // 自定义遮罩层，用于裁剪时显示黑色半透明背景
-  const { updateMask, removeMask } = useClipMask(canvas);
-  // 更新
-  const updateEvents = [
-    'scaled',
-    'selected',
-    'modified',
-    'scaling',
-    'moving',
-    'rotating',
-    'skewing',
-  ];
-  updateEvents.forEach((key) => {
-    object.on(key, () => {
-      updateMask(object);
-    });
-  });
-  // 移除
-  const removeEvents = ['removed', 'deselected'];
-  removeEvents.forEach((key) => {
-    object.on(key, removeMask);
-  });
-}
-
 export function getRectByPoints(startPoint, endPoint) {
   // 矩形参数计算（前面总结的4条公式）
   const top = Math.min(startPoint.y, endPoint.y);

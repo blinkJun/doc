@@ -19,14 +19,14 @@ import FabricTranslate from '../handles/translate';
 import {
   customDefaultContorls,
   resetDetaultContols,
-} from '../handles/controls';
-import useCornerRotateControls from '../handles/control-rotate';
-import useDelControl from '../handles/control-del';
+} from '../controls/default';
+import useCornerRotateControls from '../controls/rotate';
+import useDelControl from '../controls/del';
 import {
   useLockControl,
   doLockActivedObjectControl,
   doUnlockActivedObjectControl,
-} from '../handles/control-lock';
+} from '../controls/lock';
 
 let fabricCanvas = null;
 let fabric = null;

@@ -22,28 +22,25 @@
 
   <<< @/assets/demos/fabric/handles/selection.js
 
-  <<< @/assets/demos/fabric/handles/controls.js
+  <<< @/assets/demos/fabric/controls/default.js
 
-  <<< @/assets/demos/fabric/handles/control-rotate.js
+  <<< @/assets/demos/fabric/controls/rotate.js
 
-  <<< @/assets/demos/fabric/handles/control-del.js
+  <<< @/assets/demos/fabric/controls/del.js
 
-  <<< @/assets/demos/fabric/handles/control-lock.js
+  <<< @/assets/demos/fabric/controls/lock.js
 
   <<< @/assets/demos/fabric/canvas.vue
 
   :::
 
-## 在画布中进行框选
+## 应用
 
-<!-- <select-rect></select-rect> -->
+### 一、在画布中进行框选创建矩形
+
+<select-rect></select-rect>
 
 <script setup >
 import fabricBasic from '../../assets/demos/fabric/demos/fabric-basic.vue'
 import SelectRect from '../../assets/demos/fabric/demos/select-rect.vue'
-
-// TODO:快捷键
-// TODO:撤销重做
-// TODO:工作台
-// TODO:应用
 </script>

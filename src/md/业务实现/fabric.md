@@ -36,11 +36,53 @@
 
 ## 应用
 
-### 一、在画布中进行框选创建矩形
+### 一、常用处理函数
+
+<handles></handles>
+
+::: details 源代码
+
+  ::: code-group
+
+  <<< @/assets/demos/fabric/demos/handles.vue [常用处理函数]
+
+  <<< @/assets/demos/fabric/handles/utils.js
+
+  :::
+
+### 二、在画布中进行框选创建矩形
 
 <select-rect></select-rect>
+
+::: details 源代码
+
+  ::: code-group
+
+  <<< @/assets/demos/fabric/demos/select-rect.vue [框选创造矩形]
+
+  <<< @/assets/demos/fabric/controls/confirm.js
+
+  <<< @/assets/demos/fabric/handles/useMouseCreateRect.js
+
+  <<< @/assets/demos/fabric/handles/useResizeMask.js
+
+  :::
+
+### 三、实现文本的垂直居中
+
+<text-vertical-align></text-vertical-align>
+
+::: details 源代码
+
+  ::: code-group
+
+  <<< @/assets/demos/fabric/demos/text-vertical-align.vue [文本位置]
+
+  :::
 
 <script setup >
 import fabricBasic from '../../assets/demos/fabric/demos/fabric-basic.vue'
 import SelectRect from '../../assets/demos/fabric/demos/select-rect.vue'
+import Handles from '../../assets/demos/fabric/demos/handles.vue'
+import TextVerticalAlign from '../../assets/demos/fabric/demos/text-vertical-align.vue'
 </script>

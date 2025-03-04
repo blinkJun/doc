@@ -1,5 +1,5 @@
 <template>
-  <div ref="wrapEl" class="select-rect">
+  <div ref="wrapEl" class="canvas-box">
     <canvas :id="canvasId"></canvas>
   </div>
 </template>
@@ -32,7 +32,7 @@ const initFabric = () => {
 onMounted(initFabric);
 </script>
 <style>
-.select-rect {
+.canvas-box {
   width: 100%;
   height: 450px;
   border: 1px solid #eaeaea;

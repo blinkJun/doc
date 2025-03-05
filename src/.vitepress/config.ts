@@ -213,7 +213,7 @@ function doc() {
       ],
     },
     {
-      text: '常考算法',
+      text: '算法',
       collapsed: true,
       items: [
         {
@@ -527,42 +527,6 @@ function doc() {
       ],
     },
     {
-      text: '其他',
-      collapsed: true,
-      items: [
-        {
-          text: '正则表达式',
-          link: '/md/其他/正则表达式',
-        },
-        {
-          text: '时间匹配-cron表达式',
-          link: '/md/其他/cron表达式',
-        },
-        {
-          text: '文件匹配-glob',
-          link: '/md/其他/glob',
-        },
-      ],
-    },
-    {
-      text: 'GIS',
-      collapsed: true,
-      items: [
-        {
-          text: '地图概念',
-          link: '/md/GIS/地图概念',
-        },
-        {
-          text: 'openlayers',
-          link: '/md/GIS/openlayers',
-        },
-        {
-          text: '离线地图',
-          link: '/md/GIS/离线地图',
-        },
-      ],
-    },
-    {
       text: '脚手架',
       collapsed: true,
       items: [
@@ -639,6 +603,72 @@ function doc() {
       ],
     },
     {
+      text: 'GIS',
+      collapsed: true,
+      items: [
+        {
+          text: '地图概念',
+          link: '/md/GIS/地图概念',
+        },
+        {
+          text: 'openlayers',
+          link: '/md/GIS/openlayers',
+        },
+        {
+          text: '离线地图',
+          link: '/md/GIS/离线地图',
+        },
+      ],
+    },
+    {
+      text: '2D',
+      collapsed: true,
+      items: [
+        {
+          text: 'fabric',
+          link: '/md/2D/fabric',
+        },
+      ],
+    },
+    {
+      text: '样式实现',
+      collapsed: true,
+      items: [
+        {
+          text: '可拖拽更改盒模型大小',
+          link: '/md/样式实现/可拖拽更改盒模型大小',
+        },
+        {
+          text: '自动高度适应比例列表',
+          link: '/md/样式实现/自动高度适应比例列表',
+        },
+        {
+          text: '自适应高度输入框',
+          link: '/md/样式实现/自适应高度输入框',
+        },
+        {
+          text: '毛玻璃',
+          link: '/md/样式实现/毛玻璃',
+        },
+        {
+          text: '卡片翻转',
+          link: '/md/样式实现/卡片翻转',
+        },
+        {
+          text: '方格透明背景',
+          link: '/md/样式实现/方格透明背景',
+        },
+        {
+          text: '星系环绕',
+          link: '/md/样式实现/星系环绕',
+        },
+        {
+          text: '其它',
+          link: '/md/样式实现/其它',
+        },
+      ],
+    },
+    {
       text: '业务实现',
       collapsed: true,
       items: [
@@ -665,10 +695,6 @@ function doc() {
         {
           text: '抽奖转盘',
           link: '/md/业务实现/抽奖转盘',
-        },
-        {
-          text: 'fabric',
-          link: '/md/业务实现/fabric',
         },
         {
           text: '输入框模板',
@@ -725,50 +751,30 @@ function doc() {
       ],
     },
     {
-      text: '样式实现',
-      collapsed: true,
-      items: [
-        {
-          text: '可拖拽更改盒模型大小',
-          link: '/md/样式实现/可拖拽更改盒模型大小',
-        },
-        {
-          text: '自动高度适应比例列表',
-          link: '/md/样式实现/自动高度适应比例列表',
-        },
-        {
-          text: '自适应高度输入框',
-          link: '/md/样式实现/自适应高度输入框',
-        },
-        {
-          text: '毛玻璃',
-          link: '/md/样式实现/毛玻璃',
-        },
-        {
-          text: '卡片翻转',
-          link: '/md/样式实现/卡片翻转',
-        },
-        {
-          text: '方格透明背景',
-          link: '/md/样式实现/方格透明背景',
-        },
-        {
-          text: '星系环绕',
-          link: '/md/样式实现/星系环绕',
-        },
-        {
-          text: '其它',
-          link: '/md/样式实现/其它',
-        },
-      ],
-    },
-    {
       text: 'VSCode',
       collapsed: true,
       items: [
         {
           text: '代码片段',
           link: '/md/VSCode/代码片段',
+        },
+      ],
+    },
+    {
+      text: '其他',
+      collapsed: true,
+      items: [
+        {
+          text: '正则表达式',
+          link: '/md/其他/正则表达式',
+        },
+        {
+          text: '时间匹配-cron表达式',
+          link: '/md/其他/cron表达式',
+        },
+        {
+          text: '文件匹配-glob',
+          link: '/md/其他/glob',
         },
       ],
     },

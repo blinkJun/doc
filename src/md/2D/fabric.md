@@ -12,27 +12,27 @@
 
 ::: details 源代码
 
-  ::: code-group
+::: code-group
 
-  <<< @/assets/demos/fabric/demos/fabric-basic.vue [基础配置]
+<<< @/assets/demos/fabric/demos/fabric-basic.vue [基础配置]
 
-  <<< @/assets/demos/fabric/handles/zoom.js
+<<< @/assets/demos/fabric/handles/zoom.js
 
-  <<< @/assets/demos/fabric/handles/translate.js
+<<< @/assets/demos/fabric/handles/translate.js
 
-  <<< @/assets/demos/fabric/handles/selection.js
+<<< @/assets/demos/fabric/handles/selection.js
 
-  <<< @/assets/demos/fabric/controls/default.js
+<<< @/assets/demos/fabric/controls/default.js
 
-  <<< @/assets/demos/fabric/controls/rotate.js
+<<< @/assets/demos/fabric/controls/rotate.js
 
-  <<< @/assets/demos/fabric/controls/del.js
+<<< @/assets/demos/fabric/controls/del.js
 
-  <<< @/assets/demos/fabric/controls/lock.js
+<<< @/assets/demos/fabric/controls/lock.js
 
-  <<< @/assets/demos/fabric/canvas.vue
+<<< @/assets/demos/fabric/canvas.vue
 
-  :::
+:::
 
 ## 应用
 
@@ -42,13 +42,13 @@
 
 ::: details 源代码
 
-  ::: code-group
+::: code-group
 
-  <<< @/assets/demos/fabric/demos/handles.vue [常用处理函数]
+<<< @/assets/demos/fabric/demos/handles.vue [常用处理函数]
 
-  <<< @/assets/demos/fabric/handles/utils.js
+<<< @/assets/demos/fabric/handles/utils.js
 
-  :::
+:::
 
 ### 二、在画布中进行框选创建矩形
 
@@ -56,17 +56,17 @@
 
 ::: details 源代码
 
-  ::: code-group
+::: code-group
 
-  <<< @/assets/demos/fabric/demos/select-rect.vue [框选创造矩形]
+<<< @/assets/demos/fabric/demos/select-rect.vue [框选创造矩形]
 
-  <<< @/assets/demos/fabric/controls/confirm.js
+<<< @/assets/demos/fabric/controls/confirm.js
 
-  <<< @/assets/demos/fabric/handles/useMouseCreateRect.js
+<<< @/assets/demos/fabric/handles/useMouseCreateRect.js
 
-  <<< @/assets/demos/fabric/handles/useResizeMask.js
+<<< @/assets/demos/fabric/handles/useResizeMask.js
 
-  :::
+:::
 
 ### 三、实现文本的垂直居中
 
@@ -74,11 +74,11 @@
 
 ::: details 源代码
 
-  ::: code-group
+::: code-group
 
-  <<< @/assets/demos/fabric/demos/text-vertical-align.vue [文本位置]
+<<< @/assets/demos/fabric/demos/text-vertical-align.vue [文本位置]
 
-  :::
+:::
 
 <script setup >
 import fabricBasic from '../../assets/demos/fabric/demos/fabric-basic.vue'

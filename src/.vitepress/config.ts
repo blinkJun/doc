@@ -628,6 +628,10 @@ function doc() {
           text: 'fabric',
           link: '/md/2D/fabric',
         },
+        {
+          text: 'AntV X6',
+          link: '/md/2D/AntV X6',
+        },
       ],
     },
     {

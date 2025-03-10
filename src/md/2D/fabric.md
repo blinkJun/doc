@@ -1,6 +1,6 @@
-# 2D 引擎：[`fabric`](https://fabricjs.com/)
+# [`fabric`](https://fabricjs.com/)
 
-`fabric`是一个`javascript canvas`工具库，如果你打算使用`canvas`进行`2d`绘图，推荐使用`fabric`。
+`fabric`是一个基于`canvas`2d 绘图工具库，如果你打算使用`canvas`进行`2d`绘图，推荐使用`fabric`。
 
 官方文档比较难看懂，推荐看此作者的文章：[Fabric.js 从入门到\_\_\_\_](https://juejin.cn/post/7026941253845516324)
 

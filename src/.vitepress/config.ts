@@ -635,6 +635,16 @@ function doc() {
       ],
     },
     {
+      text: '富文本',
+      collapsed: true,
+      items: [
+        {
+          text: '富文本',
+          link: '/md/富文本/富文本.md',
+        },
+      ],
+    },
+    {
       text: '样式实现',
       collapsed: true,
       items: [
